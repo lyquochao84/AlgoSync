@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
+  --theme-color: #1a1a1a;
   --font-color: #eae7e1;
 }
 
@@ -112,12 +113,7 @@ section {
 body {
   line-height: 1;
   font-family: 'Inter', sans-serif;
-  background-image: url('/AlgoSync_Background.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  color: var(--font-color);
+  background-color: var(--theme-color);
 }
 
 ol,
@@ -141,4 +137,11 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* extra padding for smaller screens */
+  border-bottom: 1px solid var(--font-color);
 }
