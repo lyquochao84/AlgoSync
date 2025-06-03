@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
-
-.navigation_logo {
-  width: auto;
-  height: 100px;
+.navigation_wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--theme-color);
+  /* border-bottom: 1px solid var(--font-color); */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .navigation_bar {
@@ -10,7 +13,14 @@
   justify-content: space-between;
   align-items: center;
   height: 75px;
-  padding: 1.563rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.563rem 2rem;
+}
+
+.navigation_logo {
+  width: auto;
+  height: 100px;
 }
 
 .navigation_components {

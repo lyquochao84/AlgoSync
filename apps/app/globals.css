@@ -1,5 +1,6 @@
 /* Inter Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 
 :root {
   --theme-color: #1a1a1a;
@@ -139,9 +140,15 @@ table {
   border-spacing: 0;
 }
 
-.container {
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem; /* extra padding for smaller screens */
-  border-bottom: 1px solid var(--font-color);
+  padding: 0 2rem; 
+  flex: 1;
 }

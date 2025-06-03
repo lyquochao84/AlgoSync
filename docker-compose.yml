@@ -12,13 +12,6 @@ services:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true # hot-reload (for window)
 
-  # AI-service:
-  #   build: ./Services/AI-service/
-  #   ports:
-  #     - "5001:5000"
-  #   networks:
-  #     - algosync-network
-
 networks:
   algosync-network:
     driver: bridge

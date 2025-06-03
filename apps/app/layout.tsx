@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "AlgoSync",
@@ -15,9 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className='container'>
+        <div className='page-wrapper'>
           <Navigation />
-          {children}
+          <div className='content-wrapper'>
+            {children}
+          </div>
+          <Footer />
         </div>
       </body>
     </html>

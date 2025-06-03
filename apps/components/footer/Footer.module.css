@@ -1,0 +1,72 @@
+.footer {
+  width: 100%;
+  padding: 1.5rem 0;
+  background-color: var(--theme-color);
+  border-top: 1px solid var(--font-color);
+}
+
+.footer_inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_social_media {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 0.8rem;
+}
+
+.linkedIn_icon {
+  color: #0077b5;
+  font-size: 1.5rem;
+}
+
+.discord_icon {
+  color: #7289DA;
+  font-size: 1.5rem;
+}
+
+.youtube_icon {
+  color: #cd201f;
+  font-size: 1.5rem;
+}
+
+.footer_agreements {
+  padding-right: 0.8rem;
+}
+
+.agreements_text {
+  color: var(--font-color);
+  text-decoration: none;
+  font-size: 24px;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-left: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.agreements_text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--font-color);
+  transition: width 0.3s ease;
+}
+
+.agreements_text:hover::after {
+  width: 100%;
+}
+
+.terms_text {
+    margin-right: 4px;
+}
