@@ -1,14 +1,16 @@
 services:
-  AI-service:
-    build: ./Services/AI-service/
+  frontend:
+    build:
+      context: ./apps
+    container_name: frontend
     ports:
-      - "5001:5000"
-    networks:
-      - algosync-network
-
-  # auth-service:
-  # blog-service:
-  # user-service:
+      - "3000:3000"
+    volumes:
+      - ./apps:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true # hot-reload (for window)
 
 networks:
   algosync-network:
