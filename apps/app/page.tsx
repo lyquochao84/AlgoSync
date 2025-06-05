@@ -1,8 +1,17 @@
+"use client";
+
 import styles from "./page.module.css";
 import Image from "next/image";
 import HeroLogo from "@/public/Hero_Image.png";
+import { useState } from "react";
+import AuthModal from "@/components/AuthModal/AuthModal";
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+  
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
   return (
     <>
       <div className={styles.hero}>
@@ -18,8 +27,9 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.hero_button}>
-        <button>Start Reading</button>
+        <button onClick={openModal}>Start Reading</button>
       </div>
+      {showModal && <AuthModal onClose={closeModal} />}
     </>
   );
 }

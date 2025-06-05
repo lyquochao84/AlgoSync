@@ -2,30 +2,48 @@
 
 import Image from "next/image";
 import logo from "@/public/Logo.jpg";
-import { JSX } from "react";
+import { JSX, useState } from "react";
 import styles from "./Navigation.module.css";
 import Link from "next/link";
+import AuthModal from "@/components/AuthModal/AuthModal";
 
 const Navigation: React.FC = (): JSX.Element => {
+  const [showModal, setShowModal] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "signup">("login");
+  
+  const openModal = (mode: "login" | "signup") => {
+    setAuthMode(mode);
+    setShowModal(true);
+  };
+  const closeModal = () => setShowModal(false);
+
   return (
-    <nav className={styles.navigation_wrapper}>
-      <div className={styles.navigation_bar}>
-        <Link href='/'>
-          <Image
-            alt="Logo"
-            src={logo}
-            className={styles.navigation_logo}
-          />
-        </Link>
-        <div className={styles.navigation_components}>
-          <Link href='/' className={styles.navigation_components_part}>Behind AlgoSync</Link>
-          <Link href='/' className={styles.navigation_components_part}>Sync In</Link>
-          <Link href='/' className={styles.navigation_journey_button}>
-            <button>Get Started</button>
+    <>
+      <nav className={styles.navigation_wrapper}>
+        <div className={styles.navigation_bar}>
+          <Link href="/">
+            <Image alt="Logo" src={logo} className={styles.navigation_logo} />
           </Link>
+          <div className={styles.navigation_components}>
+            <Link href="/" className={styles.navigation_components_part}>
+              Behind AlgoSync
+            </Link>
+            <div
+              className={styles.navigation_components_part}
+              onClick={() => openModal("login")}
+            >
+              Sync In
+            </div>
+            <div className={styles.navigation_journey_button}>
+              <button onClick={() => openModal("signup")}>Get Started</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Display the Auth Modal */}
+      {showModal && <AuthModal onClose={closeModal} defaultMode={authMode} />}
+    </>
   );
 };
 
