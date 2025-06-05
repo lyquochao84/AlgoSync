@@ -52,6 +52,10 @@
   transition: width 0.3s ease;
 }
 
+.navigation_components_part:hover {
+  cursor: pointer;
+}
+
 .navigation_components_part:hover::after {
   width: 100%;
 }

@@ -1,0 +1,161 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--theme-color);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--font-color);
+}
+
+.modal_logo_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--font-color);
+}
+
+.githubButton {
+  background: transparent;
+  color: var(--font-color);
+  border: 1px solid #3d3a36;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.6rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.githubButton:hover {
+  background: #1b1f23;
+}
+
+.githubIcon {
+  font-size: 1.6rem;
+}
+
+.divider {
+  text-align: center;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.divider span {
+  background: var(--theme-color);
+  padding: 0 0.5rem;
+  position: relative;
+  z-index: 1;
+  color: var(--font-color);
+  font-size: 1.4rem;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #ccc;
+  z-index: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input {
+  padding: 0.75rem;
+  border: 1px solid #3d3a36;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 1.6rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #c1b3a5;
+}
+
+.submitButton {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid white;
+  background: #d7c0a3;
+  color: black;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.6rem;
+}
+
+.submitButton:hover {
+  opacity: 0.8;
+}
+
+.toggleText {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.toggleLink {
+  color: #d7c0a3;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 0.25rem;
+  font-size: 1.4rem;
+  text-decoration: underline;
+}
+
+.toggleLink:hover {
+  opacity: 0.8;
+}
