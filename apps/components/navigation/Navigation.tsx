@@ -1,21 +1,28 @@
 "use client";
 
-import Image from "next/image";
-import logo from "@/public/Logo.jpg";
 import { JSX, useState } from "react";
-import styles from "./Navigation.module.css";
+import Image from "next/image";
 import Link from "next/link";
+
+import styles from "./Navigation.module.css";
+
+import logo from "@/public/Logo.jpg";
+
 import AuthModal from "@/components/AuthModal/AuthModal";
+import { AuthMode } from "./Navigation.types";
 
 const Navigation: React.FC = (): JSX.Element => {
-  const [showModal, setShowModal] = useState(false);
-  const [authMode, setAuthMode] = useState<"login" | "signup">("login");
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [authMode, setAuthMode] = useState<AuthMode>("login");
   
-  const openModal = (mode: "login" | "signup") => {
+  const openModal = (mode: AuthMode): void => {
     setAuthMode(mode);
     setShowModal(true);
   };
-  const closeModal = () => setShowModal(false);
+
+  const closeModal = (): void => { 
+    setShowModal(false);
+  }
 
   return (
     <>
