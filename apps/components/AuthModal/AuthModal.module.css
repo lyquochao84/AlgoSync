@@ -24,7 +24,7 @@
   font-style: normal;
 }
 
-.closeButton {
+.close_button {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -49,7 +49,7 @@
   color: var(--font-color);
 }
 
-.githubButton {
+.github_button {
   background: transparent;
   color: var(--font-color);
   border: 1px solid #3d3a36;
@@ -62,17 +62,24 @@
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 
+    background 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   font-family: "Jersey 15", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
-.githubButton:hover {
+.github_button:hover {
   background: #1b1f23;
+  opacity: 0.9;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
 }
 
-.githubIcon {
+.github_icon {
   font-size: 1.6rem;
 }
 
@@ -120,7 +127,7 @@
   color: #c1b3a5;
 }
 
-.submitButton {
+.submit_button {
   margin-top: 0.5rem;
   padding: 0.75rem;
   font-size: 1rem;
@@ -129,33 +136,78 @@
   color: black;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 
+    background 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   font-family: "Jersey 15", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 1.6rem;
 }
 
-.submitButton:hover {
-  opacity: 0.8;
+.submit_button:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
 }
 
-.toggleText {
+.register_wrapper,
+.sync_in_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle_text {
   margin-top: 1rem;
   text-align: center;
   font-size: 1.4rem;
   color: white;
 }
 
-.toggleLink {
+.toggle_link {
   color: #d7c0a3;
   cursor: pointer;
   font-weight: 500;
-  margin-left: 0.25rem;
+  margin-top:0.8rem;
+  margin-left: 0.4rem;
   font-size: 1.4rem;
   text-decoration: underline;
 }
 
 .toggleLink:hover {
   opacity: 0.8;
+}
+
+/* Fade animation (Close modal) */
+.fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
 }
