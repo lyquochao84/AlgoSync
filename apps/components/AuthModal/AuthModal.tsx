@@ -4,6 +4,7 @@ import styles from "./AuthModal.module.css";
 import { FaGithub } from "react-icons/fa";
 
 import { AuthModalProps } from "./AuthModal.types";
+import Link from "next/link";
 
 const AuthModal: React.FC<AuthModalProps> = ({
   onClose,
@@ -13,6 +14,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
   const [isClosing, setIsClosing] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
+  // Change between Register modal and Sign In modal
   const toggleMode: () => void = () => {
     setIsSignUp((prev) => !prev);
   };
@@ -101,9 +103,9 @@ const AuthModal: React.FC<AuthModalProps> = ({
           <div>
             <div className={styles.register_wrapper}>
               <p className={styles.toggle_text}>Forgot your password?</p>
-              <span className={styles.toggle_link} onClick={toggleMode}>
+              <Link className={styles.toggle_link} href="/reset-password">
                 Click Here
-              </span>
+              </Link>
             </div>
             <div className={styles.register_wrapper}>
               <p className={styles.toggle_text}>Don't have an account?</p>
