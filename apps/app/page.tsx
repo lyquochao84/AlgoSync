@@ -1,21 +1,29 @@
 "use client";
 
-import styles from "./page.module.css";
-import Image from "next/image";
-import HeroLogo from "@/public/Hero_Image.png";
 import { useState } from "react";
+import Image from "next/image";
+
+import styles from "./page.module.css";
+
+import HeroLogo from "@/public/Hero_Image.png";
 import AuthModal from "@/components/AuthModal/AuthModal";
+import Link from "next/link";
 
 export default function Home() {
-  const [showModal, setShowModal] = useState(false);
-  
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  // Display the register/sync-in modal
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
 
   return (
     <>
       <div className={styles.hero}>
-        <Image src={HeroLogo} alt="AlgoSync Hero Image" className={styles.hero_image}/>
+        <Image
+          src={HeroLogo}
+          alt="AlgoSync Hero Image"
+          className={styles.hero_image}
+        />
         <div className={styles.hero_description}>
           <div className={styles.hero_title}>
             Built by Developers <br /> for <span>Developers</span>

@@ -35,12 +35,6 @@
   color: var(--font-color);
 }
 
-.modal_logo_wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .title {
   font-size: 3rem;
   font-weight: 600;
