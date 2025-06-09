@@ -7,7 +7,6 @@ import styles from "./page.module.css";
 
 import HeroLogo from "@/public/Hero_Image.png";
 import AuthModal from "@/components/AuthModal/AuthModal";
-import Link from "next/link";
 
 export default function Home() {
   const [showModal, setShowModal] = useState<boolean>(false);

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 import styles from "./AuthModal.module.css";
 import { FaGithub } from "react-icons/fa";
 
 import { AuthModalProps } from "./AuthModal.types";
-import Link from "next/link";
 
 const AuthModal: React.FC<AuthModalProps> = ({
   onClose,
@@ -12,6 +13,13 @@ const AuthModal: React.FC<AuthModalProps> = ({
 }) => {
   const [isSignUp, setIsSignUp] = useState<boolean>(defaultMode === "signup");
   const [isClosing, setIsClosing] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
+
+  const router: AppRouterInstance = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
 
   // Change between Register modal and Sign In modal
@@ -52,6 +60,37 @@ const AuthModal: React.FC<AuthModalProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close the modal when navigated to '/reset-password'
+  const handleCloseModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    handleClose();
+    setTimeout(() => {
+      router.push("/reset-password");
+    }, 300);
+  };
+
+  // Validate Sign Up Form
+  const validateForm = (): boolean => {
+    let valid = true;
+    setEmailError("");
+    setPasswordError("");
+
+    // Basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address");
+      valid = false;
+    }
+
+    // Password match check (only if in Sign Up mode)
+    if (isSignUp && password !== confirmPassword) {
+      setPasswordError("Passwords do not match");
+      valid = false;
+    }
+
+    return valid;
+  };
+
   return (
     <div
       className={`${styles.overlay} ${
@@ -80,19 +119,38 @@ const AuthModal: React.FC<AuthModalProps> = ({
           )}
         </>
 
-        <form className={styles.form}>
-          <input type="email" placeholder="Email" className={styles.input} />
+        <form className={styles.form} onSubmit={(e) => {
+          e.preventDefault();
+          if (validateForm()) {
+            console.log("Form is valid");
+          }
+        }}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={styles.input}
+          />
+          {emailError && <p className={styles.error}>{emailError}</p>}
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className={styles.input}
           />
           {isSignUp && (
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              className={styles.input}
-            />
+            <>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className={styles.input}
+              />
+              {passwordError && <p className={styles.error}>{passwordError}</p>}
+            </>
           )}
           <button type="submit" className={styles.submit_button}>
             {isSignUp ? "Start Your Journey" : "Sync In"}
@@ -103,9 +161,9 @@ const AuthModal: React.FC<AuthModalProps> = ({
           <div>
             <div className={styles.register_wrapper}>
               <p className={styles.toggle_text}>Forgot your password?</p>
-              <Link className={styles.toggle_link} href="/reset-password">
+              <a className={styles.toggle_link} onClick={handleCloseModal}>
                 Click Here
-              </Link>
+              </a>
             </div>
             <div className={styles.register_wrapper}>
               <p className={styles.toggle_text}>Don't have an account?</p>
