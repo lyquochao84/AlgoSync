@@ -205,3 +205,10 @@
     transform: scale(0.97);
   }
 }
+
+/* Checking email or password error */
+.error {
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin: 5px;
+}
