@@ -12,6 +12,19 @@ services:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true # hot-reload (for window)
 
+  auth:
+    build:
+      context: ./services/auth
+    container_name: auth-service
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./services/auth:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    
 networks:
   algosync-network:
     driver: bridge
