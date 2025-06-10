@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the source code
 COPY . .
 
+# Generate Prisma Client
+RUN npx prisma generate
+
 # Optional: expose the port your Express app runs on
 EXPOSE 4000
 

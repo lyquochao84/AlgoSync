@@ -11,6 +11,8 @@ services:
     environment:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true # hot-reload (for window)
+    networks:
+      - algosync-network
 
   auth:
     build:
@@ -24,7 +26,27 @@ services:
     environment:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true
-    
+    networks:
+      - algosync-network
+  
+  db:
+    image: postgres:16
+    container_name: algosync_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: algosync_user
+      POSTGRES_PASSWORD: algosync_pass
+      POSTGRES_DB: algosync_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - algosync-network
+
 networks:
   algosync-network:
     driver: bridge
+
+volumes:
+  pgdata:
