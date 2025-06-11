@@ -20,6 +20,7 @@ services:
     container_name: auth-service
     ports:
       - "4000:4000"
+      - "5555:5555"  
     volumes:
       - ./services/auth:/app
       - /app/node_modules
