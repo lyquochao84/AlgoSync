@@ -11,6 +11,9 @@ services:
     environment:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true # hot-reload (for window)
+      - NEXT_PUBLIC_AUTH_API=http://auth-service:4000
+    env_file:
+      - .env.docker
     networks:
       - algosync-network
 
@@ -27,6 +30,9 @@ services:
     environment:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true
+      - DATABASE_URL=postgresql://algosync_user:algosync_pass@db:5432/algosync_db?schema=public
+    env_file:
+      - .env.docker
     networks:
       - algosync-network
   
