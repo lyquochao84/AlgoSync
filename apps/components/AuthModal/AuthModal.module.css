@@ -212,3 +212,9 @@
   font-size: 1.2rem;
   margin: 5px;
 }
+
+.password_length {
+  color: var(--font-color);
+  font-size: 1.2rem;
+  margin: 5px;
+}
