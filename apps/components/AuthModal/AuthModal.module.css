@@ -43,40 +43,6 @@
   color: var(--font-color);
 }
 
-.github_button {
-  background: transparent;
-  color: var(--font-color);
-  border: 1px solid #3d3a36;
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1.6rem;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  transition: 
-    background 0.3s ease,
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  font-family: "Jersey 15", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.github_button:hover {
-  background: #1b1f23;
-  opacity: 0.9;
-  transform: scale(1.03);
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
-}
-
-.github_icon {
-  font-size: 1.6rem;
-}
-
 .divider {
   text-align: center;
   margin: 1rem 0;
@@ -217,4 +183,8 @@
   color: var(--font-color);
   font-size: 1.2rem;
   margin: 5px;
+}
+
+.success {
+  color: green;
 }

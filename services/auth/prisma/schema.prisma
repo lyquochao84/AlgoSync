@@ -12,11 +12,14 @@ model User {
   email        String?  @unique
   name         String?
   passwordHash String?  // For email/password login
-  githubId     String?  @unique
   avatarUrl    String?
   createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  bio           String?                // Short about me
+  location      String?                // City/Country
+  website       String?                // Personal or portfolio site
+  githubUrl     String?                // GitHub profile
+  linkedinUrl   String?                // LinkedIn
+  XUrl          String?                // Twitter/X
 
   @@index([email])
-  @@index([githubId])
 }

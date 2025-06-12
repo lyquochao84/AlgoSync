@@ -3,13 +3,15 @@ import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 import styles from "./AuthModal.module.css";
-import { FaGithub } from "react-icons/fa";
 
 import { AuthModalProps } from "./AuthModal.types";
 import LogInForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
-const AuthModal: React.FC<AuthModalProps> = ({ onClose, defaultMode = "login" }) => {
+const AuthModal: React.FC<AuthModalProps> = ({
+  onClose,
+  defaultMode = "login",
+}) => {
   const [isSignUp, setIsSignUp] = useState(defaultMode === "signup");
   const [isClosing, setIsClosing] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -49,23 +51,17 @@ const AuthModal: React.FC<AuthModalProps> = ({ onClose, defaultMode = "login" })
   }, []);
 
   return (
-    <div className={`${styles.overlay} ${isClosing ? styles.fadeOut : styles.fadeIn}`}>
+    <div
+      className={`${styles.overlay} ${
+        isClosing ? styles.fadeOut : styles.fadeIn
+      }`}
+    >
       <div ref={modalRef} className={styles.modal}>
         <button className={styles.close_button} onClick={onClose}>
           &times;
         </button>
 
         <h2 className={styles.title}>{isSignUp ? "Register" : "Sync In"}</h2>
-
-        {!isSignUp && (
-          <>
-            <button className={styles.github_button}>
-              <FaGithub className={styles.github_icon} />
-              Continue with GitHub
-            </button>
-            <div className={styles.divider}><span>or</span></div>
-          </>
-        )}
 
         {isSignUp ? (
           <RegisterForm />

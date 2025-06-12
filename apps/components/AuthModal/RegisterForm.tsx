@@ -42,27 +42,27 @@ const RegisterForm: React.FC = () => {
     if (!validate()) return;
 
     try {
-      const response: Response = await fetch(`${process.env.NEXT_PUBLIC_AUTH_API}/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      });
+      const response: Response = await fetch(
+        `${process.env.NEXT_PUBLIC_AUTH_API}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
         setApiError(data.message || "Registration failed"); // If backend sends error in JSON
-      }
-      else {
+      } else {
         setSuccessMessage("Registration successful!");
       }
-    }
-    catch(error) {
+    } catch (error) {
       setApiError("Network error. Please try again.");
-    }
-    finally {
+    } finally {
       setIsLoading(false);
     }
   };
@@ -87,7 +87,15 @@ const RegisterForm: React.FC = () => {
         onChange={(e) => setPassword(e.target.value)}
         disabled={isLoading}
       />
-      <p className={styles.password_length}>Password must be at least 6 characters</p>
+      <p
+        className={
+          password.length >= 6
+            ? `${styles.password_length} ${styles.success}`
+            : styles.password_length
+        }
+      >
+        Password must be at least 6 characters
+      </p>
       <input
         type="password"
         placeholder="Confirm Password"
@@ -98,7 +106,11 @@ const RegisterForm: React.FC = () => {
       />
       {passwordError && <p className={styles.error}>{passwordError}</p>}
 
-      <button type="submit" className={styles.submit_button} disabled={isLoading}>
+      <button
+        type="submit"
+        className={styles.submit_button}
+        disabled={isLoading}
+      >
         {isLoading ? "Registering..." : "Start Your Journey"}
       </button>
 

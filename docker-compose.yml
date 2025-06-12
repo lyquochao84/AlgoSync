@@ -35,7 +35,24 @@ services:
       - .env.docker
     networks:
       - algosync-network
-  
+
+  email:
+    build:
+      context: ./services/email
+    container_name: email-service
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./services/email:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    env_file:
+      - .env.docker
+    networks:
+      - algosync-network
+
   db:
     image: postgres:16
     container_name: algosync_postgres
