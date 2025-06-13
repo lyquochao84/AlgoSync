@@ -1,5 +1,5 @@
 import express from "express";
-import { sendCode, verifyCode } from "../controllers/sendcodeController";
+import { sendCode, verifyCode } from "../controllers/emailController";
 
 const router = express.Router();
 

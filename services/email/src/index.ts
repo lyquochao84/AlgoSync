@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import routes from "./routes/emailRoutes";
+import emailRoutes from "./routes/emailRoutes";
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/email', routes);
+app.use('/email', emailRoutes);
 
 app.listen(PORT, () => {
   console.log(`Email service running on port ${PORT}`);
