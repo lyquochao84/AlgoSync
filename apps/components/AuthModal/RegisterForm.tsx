@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import styles from "./AuthModal.module.css";
+import { RegisterFormProps } from "./AuthModal.types";
 
-const RegisterForm: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+const RegisterForm: React.FC<RegisterFormProps> = ({
+  onRegistered,
+  registerEmail,
+  registerPassword,
+  setRegisterEmail,
+  setRegisterPassword,
+}) => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>("");
   const [apiError, setApiError] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const isValidLength = registerPassword.length >= 6;
+  const hasUpperAndLower =
+    /[A-Z]/.test(registerPassword) && /[a-z]/.test(registerPassword);
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(registerPassword);
+
+  const isPasswordValid = isValidLength && hasUpperAndLower && hasSpecialChar;
 
   const validate = (): boolean => {
     let valid = true;
@@ -19,17 +31,17 @@ const RegisterForm: React.FC = () => {
     setSuccessMessage("");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(registerEmail)) {
       setEmailError("Please enter a valid email address");
       valid = false;
     }
 
-    if (password !== confirmPassword) {
+    if (registerPassword !== confirmPassword) {
       setPasswordError("Passwords do not match");
       valid = false;
     }
 
-    if (password.length < 6) {
+    if (registerPassword.length < 6) {
       setPasswordError("Password must be at least 6 characters");
       valid = false;
     }
@@ -41,6 +53,8 @@ const RegisterForm: React.FC = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    setIsLoading(true);
+
     try {
       const response: Response = await fetch(
         `${process.env.NEXT_PUBLIC_AUTH_API}/auth/register`,
@@ -49,7 +63,10 @@ const RegisterForm: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({
+            email: registerEmail,
+            password: registerPassword,
+          }),
         }
       );
 
@@ -58,7 +75,12 @@ const RegisterForm: React.FC = () => {
       if (!response.ok) {
         setApiError(data.message || "Registration failed"); // If backend sends error in JSON
       } else {
-        setSuccessMessage("Registration successful!");
+        setSuccessMessage(data.message);
+
+        // simulate delay then show verification modal
+        setTimeout(() => {
+          if (onRegistered) onRegistered();
+        }, 1000);
       }
     } catch (error) {
       setApiError("Network error. Please try again.");
@@ -73,29 +95,19 @@ const RegisterForm: React.FC = () => {
         type="email"
         placeholder="Email"
         className={styles.input}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={registerEmail}
+        onChange={(e) => setRegisterEmail(e.target.value)}
         disabled={isLoading}
       />
       {emailError && <p className={styles.error}>{emailError}</p>}
-
       <input
         type="password"
         placeholder="Password"
         className={styles.input}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={registerPassword}
+        onChange={(e) => setRegisterPassword(e.target.value)}
         disabled={isLoading}
       />
-      <p
-        className={
-          password.length >= 6
-            ? `${styles.password_length} ${styles.success}`
-            : styles.password_length
-        }
-      >
-        Password must be at least 6 characters
-      </p>
       <input
         type="password"
         placeholder="Confirm Password"
@@ -104,18 +116,47 @@ const RegisterForm: React.FC = () => {
         onChange={(e) => setConfirmPassword(e.target.value)}
         disabled={isLoading}
       />
+      <ul className={styles.password_requirements}>
+        <li
+          className={
+            isValidLength
+              ? `${styles.password_length} ${styles.success_password_requirements}`
+              : styles.password_length
+          }
+        >
+          Password must be at least 6 characters
+        </li>
+        <li
+          className={
+            hasUpperAndLower
+              ? `${styles.password_length} ${styles.success_password_requirements}`
+              : styles.password_length
+          }
+        >
+          Must include both uppercase and lowercase letters
+        </li>
+        <li
+          className={
+            hasSpecialChar
+              ? `${styles.password_length} ${styles.success_password_requirements}`
+              : styles.password_length
+          }
+        >
+          Must include at least one special character (!@#$...)
+        </li>
+      </ul>
       {passwordError && <p className={styles.error}>{passwordError}</p>}
-
+      {apiError && <p className={styles.error}>{apiError}</p>}
+      {successMessage && <p className={styles.success}>{successMessage}</p>}
       <button
         type="submit"
-        className={styles.submit_button}
-        disabled={isLoading}
+        className={`${styles.submit_button} ${
+          !isPasswordValid || isLoading ? styles.disabled_button : ""
+        }`}
+        disabled={!isPasswordValid || isLoading}
       >
         {isLoading ? "Registering..." : "Start Your Journey"}
       </button>
-
-      {apiError && <p className={styles.error}>{apiError}</p>}
-      {successMessage && <p className={styles.success}>{successMessage}</p>}
     </form>
   );
 };

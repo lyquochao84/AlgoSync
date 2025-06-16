@@ -7,6 +7,7 @@ import styles from "./AuthModal.module.css";
 import { AuthModalProps } from "./AuthModal.types";
 import LogInForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import OTPModal from "../OTPModal/OTPModal";
 
 const AuthModal: React.FC<AuthModalProps> = ({
   onClose,
@@ -14,6 +15,10 @@ const AuthModal: React.FC<AuthModalProps> = ({
 }) => {
   const [isSignUp, setIsSignUp] = useState(defaultMode === "signup");
   const [isClosing, setIsClosing] = useState<boolean>(false);
+  const [showVerificationModal, setShowVerificationModal] =
+    useState<boolean>(false);
+  const [registerEmail, setRegisterEmail] = useState<string>("");
+  const [registerPassword, setRegisterPassword] = useState<string>("");
   const modalRef = useRef<HTMLDivElement>(null);
   const router: AppRouterInstance = useRouter();
 
@@ -34,51 +39,75 @@ const AuthModal: React.FC<AuthModalProps> = ({
 
   // Close on ESC
   useEffect(() => {
+    if (showVerificationModal) return;
+
     const esc = (e: KeyboardEvent) => e.key === "Escape" && handleClose();
     document.addEventListener("keydown", esc);
     return () => document.removeEventListener("keydown", esc);
-  }, []);
+  }, [showVerificationModal]);
 
   // Click outside to close
   useEffect(() => {
+    if (showVerificationModal) return;
+
     const clickOutside = (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
         handleClose();
       }
     };
+
     document.addEventListener("mousedown", clickOutside);
     return () => document.removeEventListener("mousedown", clickOutside);
-  }, []);
+  }, [showVerificationModal]);
 
   return (
-    <div
-      className={`${styles.overlay} ${
-        isClosing ? styles.fadeOut : styles.fadeIn
-      }`}
-    >
-      <div ref={modalRef} className={styles.modal}>
-        <button className={styles.close_button} onClick={onClose}>
-          &times;
-        </button>
+    <>
+      {showVerificationModal ? (
+        <OTPModal
+          registerEmail={registerEmail}
+          registerPassword={registerPassword}
+        />
+      ) : (
+        <div
+          className={`${styles.overlay} ${
+            isClosing ? styles.fadeOut : styles.fadeIn
+          }`}
+        >
+          <div ref={modalRef} className={styles.modal}>
+            <button className={styles.close_button} onClick={onClose}>
+              &times;
+            </button>
 
-        <h2 className={styles.title}>{isSignUp ? "Register" : "Sync In"}</h2>
+            <h2 className={styles.title}>
+              {isSignUp ? "Register" : "Sync In"}
+            </h2>
 
-        {isSignUp ? (
-          <RegisterForm />
-        ) : (
-          <LogInForm onForgotPassword={handleCloseModal} />
-        )}
+            {isSignUp ? (
+              <RegisterForm
+                onRegistered={() => setShowVerificationModal(true)}
+                registerEmail={registerEmail}
+                registerPassword={registerPassword}
+                setRegisterEmail={setRegisterEmail}
+                setRegisterPassword={setRegisterPassword}
+              />
+            ) : (
+              <LogInForm onForgotPassword={handleCloseModal} />
+            )}
 
-        <div className={styles.register_wrapper}>
-          <p className={styles.toggle_text}>
-            {isSignUp ? "Already have an account?" : "Don't have an account?"}
-          </p>
-          <span className={styles.toggle_link} onClick={toggleMode}>
-            {isSignUp ? "Sync In" : "Sign Up"}
-          </span>
+            <div className={styles.register_wrapper}>
+              <p className={styles.toggle_text}>
+                {isSignUp
+                  ? "Already have an account?"
+                  : "Don't have an account?"}
+              </p>
+              <span className={styles.toggle_link} onClick={toggleMode}>
+                {isSignUp ? "Sync In" : "Sign Up"}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

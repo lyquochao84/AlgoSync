@@ -1,16 +1,50 @@
 import React, { useState } from "react";
-
+import { useRouter } from "next/navigation";
 import styles from "./AuthModal.module.css";
-
 import { LogInFormProps } from "./AuthModal.types";
 
 const LogInForm: React.FC<LogInFormProps> = ({ onForgotPassword }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Log in with", email, password);
+    setLoading(true);
+    setError("");
+
+    try {
+      const response: Response = await fetch(
+        `${process.env.NEXT_PUBLIC_AUTH_API}/auth/log-in`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // To send cookies
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || "Sync in failed");
+        setLoading(false);
+        return;
+      }
+
+      // Optional loading delay
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 1500); // Delay for 1.5s
+    } catch (err) {
+      setError("Network error");
+      setLoading(false);
+    }
   };
 
   return (
@@ -21,6 +55,7 @@ const LogInForm: React.FC<LogInFormProps> = ({ onForgotPassword }) => {
         className={styles.input}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
       />
       <input
         type="password"
@@ -28,10 +63,27 @@ const LogInForm: React.FC<LogInFormProps> = ({ onForgotPassword }) => {
         className={styles.input}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
       />
-      <button type="submit" className={styles.submit_button}>
-        Sync In
-      </button>
+      {loading ? (
+        <button
+          type="submit"
+          className={styles.loading_button}
+          disabled={loading}
+        >
+          Loading...
+        </button>
+      ) : (
+        <button
+          type="submit"
+          className={styles.submit_button}
+          disabled={loading}
+        >
+          Sync In
+        </button>
+      )}
+
+      {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.sync_in_wrapper}>
         <p className={styles.toggle_text}>Forgot your password?</p>

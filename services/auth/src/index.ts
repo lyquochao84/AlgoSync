@@ -1,5 +1,6 @@
 import express, { Express } from "express";
 import cors from "cors";
+import cookieParser from 'cookie-parser';
 import dotenv from "dotenv";
 import authRoutes from './routes/authRoutes';
 
@@ -16,6 +17,9 @@ app.use(cors({
 // Convert data sent from body to json format
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Parse the cookie data
+app.use(cookieParser());
 
 app.use('/auth', authRoutes);
 

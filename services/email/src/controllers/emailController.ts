@@ -1,38 +1,20 @@
 import { Request, Response } from "express";
-import sgMail from "@sendgrid/mail";
-import dotenv from "dotenv";
+import { sendOTPEmail } from "../services/emailService";
+import { generateOTP, storeOTP, verifyStoredOTP } from "../services/otpService";
 
-dotenv.config();
-
-const EMAIL_FROM = process.env.EMAIL_FROM!;
-const otpMap = new Map<string, { code: string; expiresAt: number }>();
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-
-const generateOTP = () =>
-  Math.floor(100000 + Math.random() * 900000).toString();
-
+// Send OTP Code
 export const sendCode = async (req: Request, res: Response) => {
   const { email } = req.body;
   if (!email) {
-    res.status(400).json({ message: "Invalid Email" }); 
-    return; 
+    res.status(400).json({ message: "Invalid Email" });
+    return
   }
 
   const code = generateOTP();
-  const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
-
-  otpMap.set(email, { code, expiresAt });
-  
-  const msg = {
-    to: email,
-    from: EMAIL_FROM,
-    subject: "Your OTP Code",
-    text: `Your OTP code is ${code}. It will expire in 10 minutes.`,
-  };
+  storeOTP(email, code);
 
   try {
-    await sgMail.send(msg);
+    await sendOTPEmail(email, code);
     res.status(200).json({ message: "OTP sent" });
   } 
   catch (error) {
@@ -41,4 +23,27 @@ export const sendCode = async (req: Request, res: Response) => {
   }
 };
 
-export const verifyCode = async (req: Request, res: Response) => {};
+// Verify OTP Code
+export const verifyCode = (req: Request, res: Response) => {
+  const { email, verificationCode } = req.body;
+
+  if (!email || !verificationCode) {
+    res.status(400).json({ message: "Missing fields" });
+    return;
+  }
+
+  const result = verifyStoredOTP(email, verificationCode);
+
+  if (result === "expired") {
+    res.status(400).json({ message: "OTP expired" });
+    return;
+  }
+
+  if (result === "invalid") {
+    res.status(400).json({ message: "Invalid OTP" });
+    return;
+  }
+
+  res.status(200).json({ message: "OTP verified" });
+  return;
+};
