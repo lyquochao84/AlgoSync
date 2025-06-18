@@ -4,7 +4,17 @@
 
 :root {
   --theme-color: #1a1a1a;
+  --second-theme-color: #d7c0a3;
   --font-color: #eae7e1;
+
+  --web-team: #dc5303;
+  --ai-team: #3c2468;
+  --mobile-team: #bc7802;
+  --cyber-team: #004675;
+  --infra-team: #494d46;
+  --data-team: #b5b5a2;
+  --game-team: #de3729;
+  --fintech-team: #279e52;
 }
 
 html,
