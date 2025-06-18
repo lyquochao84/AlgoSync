@@ -8,18 +8,20 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String?  @unique
-  name         String?
-  passwordHash String?  // For email/password login
-  avatarUrl    String?
-  createdAt    DateTime @default(now())
+  id            String   @id @default(uuid())
+  email         String?  @unique
+  name          String?
+  passwordHash  String?  // For email/password login
+  createdAt     DateTime @default(now())
+  avatarUrl     String?
   bio           String?                // Short about me
   location      String?                // City/Country
-  website       String?                // Personal or portfolio site
+  portfolioURL  String?                // Personal or portfolio site
   githubUrl     String?                // GitHub profile
   linkedinUrl   String?                // LinkedIn
   XUrl          String?                // Twitter/X
+  isOnboarded   Boolean  @default(false)
+  team          String?
 
   @@index([email])
 }

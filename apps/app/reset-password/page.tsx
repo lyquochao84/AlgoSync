@@ -2,5 +2,4 @@ import ResetPasswordModal from "@/components/ResetPasswordModal/ResetPasswordMod
 
 export default function ResetPassword() {
     return <ResetPasswordModal />;
-    
 }

@@ -74,7 +74,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
 
       if (!response.ok) {
         setApiError(data.message || "Registration failed"); // If backend sends error in JSON
-      } else {
+      } 
+      else {
         setSuccessMessage(data.message);
 
         // simulate delay then show verification modal
@@ -82,9 +83,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           if (onRegistered) onRegistered();
         }, 1000);
       }
-    } catch (error) {
+    } 
+    catch (error) {
       setApiError("Network error. Please try again.");
-    } finally {
+    } 
+    finally {
       setIsLoading(false);
     }
   };

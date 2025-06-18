@@ -60,8 +60,7 @@ const OTPModal: React.FC<OTPModalProps> = ({
       if (response.ok) {
         setResendMessage(data.message);
         setResendSuccessfully(true);
-      } 
-      else {
+      } else {
         setResendMessage(data.message || "Failed to resend the code");
         setResendSuccessfully(false);
       }
@@ -101,6 +100,11 @@ const OTPModal: React.FC<OTPModalProps> = ({
       if (response.ok) {
         setOTPMessage(data.message);
         setOTPSuccess(true);
+
+        // Loading delay
+        setTimeout(() => {
+          window.location.replace("/onboarding");
+        }, 1000); // Delay for 1.5s
       } 
       else {
         setOTPMessage(data.message || "Verification failed! Please try again");
