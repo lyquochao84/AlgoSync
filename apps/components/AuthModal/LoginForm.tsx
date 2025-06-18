@@ -37,11 +37,18 @@ const LogInForm: React.FC<LogInFormProps> = ({ onForgotPassword }) => {
         return;
       }
 
-      // Optional loading delay
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 1500); // Delay for 1.5s
-    } catch (err) {
+      if (!data.isOnboarded) {
+        setTimeout(() => {
+          window.location.replace("/onboarding");
+        }, 1000); 
+      } 
+      else {
+        setTimeout(() => {
+          window.location.replace("/dashboard");
+        }, 1500);
+      }
+    } 
+    catch (err) {
       setError("Network error");
       setLoading(false);
     }
