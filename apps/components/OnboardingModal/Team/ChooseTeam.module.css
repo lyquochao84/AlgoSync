@@ -1,0 +1,213 @@
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline: --section;
+  height: 110dvh;
+  position: relative;
+  z-index: 0;
+  /* overflow: hidden; */
+}
+
+.content {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: blink ease-in-out both;
+  animation-timeline: --section;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  color: var(--font-color);
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 550;
+  margin-bottom: 2.4rem;
+  color: #d7c0a3;
+}
+
+.houses_wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+.house_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+.house_item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.house_item_logo {
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.house_item_text {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+    filter: blur(0.5rem) contrast(4);
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(0) contrast(1);
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+/* Laptop */
+@media (max-height: 800px), (max-width: 1024px) {
+  .content {
+    position: relative;
+    overflow-y: auto;
+    padding: 1rem 1rem 4rem;
+  }
+}
+
+/* Team Modal */
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal_content {
+  background: #121212;
+  display: flex;
+  flex-direction: row;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px; /* increased width to allow side-by-side */
+  height: 500px; /* or use min-height for responsiveness */
+  color: var(--font-color);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+  border: 2px solid transparent;
+  font-family: "Jersey 15", sans-serif;
+}
+
+.modal_logo {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+  border-right: 2px solid #2a2a2a;
+  padding: 1rem;
+}
+
+.modal_info_wrapper {
+  width: 50%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow-y: auto;
+}
+
+.modal_info_title {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal_info_content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.house_modal_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.house_modal_info strong {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.house_modal_developer_type {
+  font-size: 1.2rem;
+}
+
+.house_modal_info ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  line-height: 1.4;
+  color: #d0d0d0;
+  font-size: 1.2rem;
+}
+
+.house_modal_choose_button {
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--font-color);
+  border: 2px solid var(--font-color);
+  padding: 0.5rem 1.5rem;
+  font-family: inherit;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 8px;
+}
+
+.house_modal_choose_button:hover {
+  background: var(--font-color);
+  color: #000;
+  cursor: pointer;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
