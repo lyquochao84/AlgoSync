@@ -5,11 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./Navigation.module.css";
-
 import logo from "@/public/Logo.jpg";
 
 import AuthModal from "@/components/AuthModal/AuthModal";
-import { AuthMode } from "./Navigation.types";
+import { AuthMode } from "@/types/Navigation/Navigation";
 
 const Navigation: React.FC = (): JSX.Element => {
   const [showModal, setShowModal] = useState<boolean>(false);

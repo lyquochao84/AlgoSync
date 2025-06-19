@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+
 import styles from "./AuthModal.module.css";
-import { LogInFormProps } from "./AuthModal.types";
+
+import { LogInFormProps } from "@/types/AuthModal/AuthModal";
 
 const LogInForm: React.FC<LogInFormProps> = ({ onForgotPassword }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-
-  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

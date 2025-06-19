@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
+
 import styles from "./OTPModal.module.css";
-import { OTPModalProps } from "./OTPModal.types";
+
+import { OTPModalProps } from "@/types/OTPModal/OTPModal";
 
 const OTPModal: React.FC<OTPModalProps> = ({
   registerEmail,
@@ -60,11 +62,13 @@ const OTPModal: React.FC<OTPModalProps> = ({
       if (response.ok) {
         setResendMessage(data.message);
         setResendSuccessfully(true);
-      } else {
+      } 
+      else {
         setResendMessage(data.message || "Failed to resend the code");
         setResendSuccessfully(false);
       }
-    } catch (error) {
+    } 
+    catch (error) {
       alert("Network error. Please try again.");
     }
   };
@@ -110,7 +114,8 @@ const OTPModal: React.FC<OTPModalProps> = ({
         setOTPMessage(data.message || "Verification failed! Please try again");
         setOTPSuccess(false);
       }
-    } catch (error) {
+    } 
+    catch (error) {
       setOTPMessage("Network error. Please try again");
       setOTPSuccess(false);
     }

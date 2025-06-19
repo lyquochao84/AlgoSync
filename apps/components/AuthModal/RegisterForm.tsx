@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import styles from "./AuthModal.module.css";
-import { RegisterFormProps } from "./AuthModal.types";
+
+import { RegisterFormProps } from "@/types/AuthModal/AuthModal";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({
   onRegistered,

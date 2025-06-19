@@ -1,7 +1,8 @@
 // app/layout.tsx
 import './globals.css';
-import LayoutClientWrapper from '@/components/LayoutClientWrapper/LayoutClientWrapper';
 import type { Metadata } from 'next';
+
+import OnboardingLayout from '@/components/OnboardingLayout/OnboardingLayout';
 
 export const metadata: Metadata = {
   title: 'AlgoSync',
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <LayoutClientWrapper>{children}</LayoutClientWrapper>
+        <OnboardingLayout>{children}</OnboardingLayout>
       </body>
     </html>
   );

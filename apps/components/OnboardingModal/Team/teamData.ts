@@ -6,7 +6,7 @@ import infraLogo from "@/public/Elephant.png";
 import dataLogo from "@/public/Owl.png";
 import gameLogo from "@/public/Dragon.png";
 import quantLogo from "@/public/Snake.png";
-import { TeamName } from "./ChoosTeam.types";
+import { TeamName } from "@/types/OnboardingModal/ChooseTeam/ChooseTeam";
 
 export const teamData: Record<TeamName, {
   name: TeamName;
