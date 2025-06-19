@@ -4,7 +4,8 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 import styles from "./AuthModal.module.css";
 
-import { AuthModalProps } from "./AuthModal.types";
+import { AuthModalProps } from "@/types/AuthModal/AuthModal";
+
 import LogInForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import OTPModal from "../OTPModal/OTPModal";

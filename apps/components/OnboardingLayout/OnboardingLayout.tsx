@@ -1,10 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
-export default function LayoutClientWrapper({
+export default function OnboardingLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -19,7 +21,10 @@ export default function LayoutClientWrapper({
       {!hideLayout ? (
         <div className="content-wrapper">{children}</div>
       ) : (
-        children
+        <>
+          <Toaster position="top-center" reverseOrder={false} />
+          {children}
+        </>
       )}
 
       {!hideLayout && <Footer />}

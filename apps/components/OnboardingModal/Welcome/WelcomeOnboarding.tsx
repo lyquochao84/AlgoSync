@@ -1,7 +1,8 @@
-// WelcomeOnboarding.tsx
 "use client";
 import React from "react";
+
 import styles from "./WelcomeOnboarding.module.css";
+
 import Particles from "@/Reactbits/Particles/Particles";
 
 const WelcomeOnboarding: React.FC = () => {

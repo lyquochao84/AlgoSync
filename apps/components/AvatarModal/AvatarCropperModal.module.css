@@ -1,0 +1,105 @@
+/* Overlay background */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal container */
+.modal {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  padding: 1.5rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* Cropper wrapper with circular mask */
+.cropContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Zoom slider */
+.controls {
+  width: 100%;
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls input[type="range"] {
+  width: 80%;
+  margin-bottom: 1rem;
+  accent-color: var(--second-theme-color);
+}
+
+/* Action buttons */
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.buttons button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+/* Cancel button */
+.buttons button:nth-child(2) {
+  background: transparent;
+  color: #ccc;
+}
+
+.buttons button:nth-child(2):hover {
+  background: #333;
+}
+
+/* Save button */
+.buttons button:nth-child(1) {
+  background: var(--second-theme-color);
+  color: var(--theme-color);
+  border: 1px solid var(--second-theme-color);
+  font-weight: 700;
+}
+
+.buttons button:nth-child(1):hover {
+  background: #333;
+  color: white;
+  border: 1px solid var(--second-theme-color);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
