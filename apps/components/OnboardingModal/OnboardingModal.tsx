@@ -32,33 +32,36 @@ const OnBoardingModal: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response: Response = await fetch("http://localhost:4000/auth/users/onboarding", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // user token after login
-        },
-        body: JSON.stringify({
-          team: selectedTeam,
-          name: username,
-          headline,
-          avatarUrl,
-        }),
-      });
+      const response: Response = await fetch(
+        "http://localhost:4000/auth/users/onboarding",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            team: selectedTeam,
+            name: username,
+            bio: headline,
+            avatarUrl,
+          }),
+        }
+      );
 
       const data = await response.json();
-      
+
       if (response.ok) {
-        router.push("/dashboard");
         toast.success(`${data.message}`);
-      }
+        router.push("/dashboard");
+      } 
       else {
-        toast.error(`${data.message}`);
+        toast.error(data?.error || "Failed to update your profile.");
       }
     } 
-    catch (err) {
+    catch (error) {
       setError("Failed to save your profile. Please try again.");
-    } 
+    }
     finally {
       setLoading(false);
     }
