@@ -1,0 +1,85 @@
+.navigation_wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--theme-color);
+  /* border-bottom: 1px solid var(--font-color); */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.navigation_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.563rem 2rem;
+}
+
+.navigation_logo {
+  width: auto;
+  height: 100px;
+}
+
+.navigation_components {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navigation_components_part {
+  text-decoration: none;
+  color: var(--font-color);
+  font-size: 24px;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding-top: 22px;
+  position: relative;
+  display: inline-block;
+}
+
+.navigation_components_part::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--font-color);
+  transition: width 0.3s ease;
+}
+
+.navigation_components_part:hover {
+  cursor: pointer;
+}
+
+.navigation_components_part:hover::after {
+  width: 100%;
+}
+
+.navigation_journey_button {
+  padding-top: 11px;
+}
+
+.navigation_journey_button button {
+  background-color: var(--font-color);
+  border: 1px solid var(--font-color);
+  color: black;
+  border-radius: 10px;
+  font-size: 24px;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding: 8px 16px;
+  transition-duration: 0.4s;
+}
+
+.navigation_journey_button button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+}

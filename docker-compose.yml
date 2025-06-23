@@ -1,0 +1,76 @@
+services:
+  frontend:
+    build:
+      context: ./apps
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./apps:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true # hot-reload (for window)
+      - NEXT_PUBLIC_AUTH_API=http://auth-service:4000
+    env_file:
+      - .env.docker
+    networks:
+      - algosync-network
+
+  auth:
+    build:
+      context: ./services/auth
+    container_name: auth-service
+    ports:
+      - "4000:4000"
+      - "5555:5555"  
+    volumes:
+      - ./services/auth:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+      - DATABASE_URL=postgresql://algosync_user:algosync_pass@db:5432/algosync_db?schema=public
+    env_file:
+      - .env.docker
+    networks:
+      - algosync-network
+
+  email:
+    build:
+      context: ./services/email
+    container_name: email-service
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./services/email:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    env_file:
+      - .env.docker
+    networks:
+      - algosync-network
+
+  db:
+    image: postgres:16
+    container_name: algosync_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: algosync_user
+      POSTGRES_PASSWORD: algosync_pass
+      POSTGRES_DB: algosync_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - algosync-network
+
+networks:
+  algosync-network:
+    driver: bridge
+
+volumes:
+  pgdata:

@@ -1,0 +1,63 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem 0;
+  padding: 0 2.7rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.hero_image {
+  width: 30rem;
+  height: 25rem;
+}
+
+.hero_description {
+  max-width: 50%;
+}
+
+.hero_title {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: var(--font-color);
+  margin-bottom: 1.6rem;
+}
+
+.hero_title span {
+  text-decoration: underline;
+}
+
+.hero_subtitle {
+  font-size: 1.6rem;
+  color: var(--font-color);
+  line-height: 1.6rem;
+}
+
+.hero_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 0;
+}
+
+.hero_button button {
+  background-color: var(--font-color);
+  border: 1px solid var(--font-color);
+  color: black;
+  border-radius: 10px;
+  font-size: 24px;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  padding: 8px 16px;
+  transition-duration: 0.4s;
+}
+
+.hero_button button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+}

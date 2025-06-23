@@ -1,0 +1,140 @@
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline: --section;
+  height: 100dvh;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Background image using ::before */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../../public/Onboarding-BG-Image-2.png"); /* Replace with your path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.26;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.content {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: blink ease-in-out both;
+  animation-timeline: --section;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  color: var(--font-color);
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 550;
+  margin-bottom: 1rem;
+  color: #d7c0a3;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.subtitle strong {
+  color: #d7c0a3;
+}
+
+
+.toggleButton {
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--font-color);
+  border: 2px solid var(--font-color);
+  padding: 0.5rem 1.5rem;
+  font-family: inherit;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 8px;
+}
+
+.toggleButton:hover {
+  background: var(--font-color);
+  color: #000;
+  cursor: pointer;
+}
+
+.historyPanel {
+  position: fixed; /* CHANGE from absolute to fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Always center */
+  background: rgba(0, 0, 0, 0.85);
+  width: 80%;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
+  z-index: 2;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* No need to reposition it in `.open` */
+.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Reuse your entry style */
+.entry {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.entry h2,
+.entry h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.entry p {
+  font-size: 2.0rem;
+  line-height: 1.6;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+    filter: blur(0.5rem) contrast(4);
+    visibility: hidden;
+    pointer-events: none; 
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(0) contrast(1);
+    visibility: visible;
+    pointer-events: auto; 
+  }
+}

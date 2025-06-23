@@ -1,0 +1,58 @@
+/* WelcomeOnboarding.module.css */
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline: --section;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: blink ease-in-out both;
+  animation-timeline: --section;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  color: var(--font-color);
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.title {
+  font-size: 7.8rem;
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+  z-index: 2;
+  color: #d7c0a3;
+}
+
+.subtitle {
+  font-size: 2.2rem;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+    filter: blur(0.5rem) contrast(4);
+    visibility: hidden;
+    pointer-events: none; 
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(0) contrast(1);
+    visibility: visible;
+    pointer-events: auto; 
+  }
+}

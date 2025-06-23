@@ -1,0 +1,155 @@
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline: --section;
+  height: 100dvh;
+  position: relative;
+  z-index: 0;
+}
+
+.content {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: blink ease-in-out both;
+  animation-timeline: --section;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  color: var(--font-color);
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Section Title */
+.title {
+  font-size: 5rem;
+  font-weight: 550;
+  color: #d7c0a3;
+  margin-bottom: 0.6rem;
+}
+
+/* Subtitle Text */
+.subtitle {
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Label/Input Groups */
+.form_group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.form_group label {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  color: var(--font-color);
+}
+
+.form_group label span {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #888;
+}
+
+.file_input {
+  display: none;
+}
+
+.upload_button {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--font-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.upload_button:hover {
+  opacity: 0.7;
+}
+
+.upload_button.saved {
+  border-color: #22c55e;
+}
+
+.check_icon {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  color: #22c55e;
+  font-size: 1.2rem;
+}
+
+/* Input Fields */
+.form_group input[type="text"],
+.form_group input[type="file"] {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background: #1e1e1e;
+  color: #d7c0a3;
+  font-size: 1.4rem;
+  transition: border 0.2s, background 0.3s;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Submit button */
+.submit_button {
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--font-color);
+  border: 2px solid var(--font-color);
+  padding: 0.5rem 1.5rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 8px;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.submit_button:hover {
+  cursor: pointer;
+  border: 2px solid var(--font-color);
+  background-color: var(--font-color);
+  color: black;
+}
+
+/* Blink Animation */
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+    filter: blur(0.5rem) contrast(4);
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(0) contrast(1);
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
