@@ -1,26 +1,18 @@
 "use client";
 
-import { useState } from "react";
-
 import styles from "./WorldHistory.module.css";
 
 const WorldHistory: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <section id="history" className={styles.section}>
       <div className={styles.content}>
-        <h1 className={styles.title}>History</h1>
         <p className={styles.subtitle}>
-          <strong>Note: </strong> 
-          You don't need to know the history, but it hits differently when you do
+          No matter who you are or where you started, here in{" "}
+          <strong>AlgoSync</strong> <br />
+          You'll become someone new <br /> A developer, a builder, a dreamer and
+          a challenger <br />
+          <span>Your journey begins now</span>
         </p>
-        <button
-          className={styles.toggleButton}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? "Stop" : "Listen"}
-        </button>
       </div>
     </section>
   );

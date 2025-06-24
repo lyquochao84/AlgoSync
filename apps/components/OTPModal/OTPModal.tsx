@@ -128,20 +128,43 @@ const OTPModal: React.FC<OTPModalProps> = ({
       const data = await response.json();
 
       if (response.ok) {
-        setOTPMessage(data.message);
+        toast.success(data.message, {
+          duration: 3000,
+          style: {
+            background: "#333",
+            color: "#fff",
+            borderRadius: "8px",
+          },
+        });
         setOTPSuccess(true);
 
         // Loading delay
         setTimeout(() => {
           window.location.replace("/onboarding");
         }, 1000); // Delay for 1.5s
-      } else {
-        setOTPMessage(data.message || "Verification failed! Please try again");
+      } 
+      else {
+        toast.error(data.message || "Verification failed! Please try again", {
+          duration: 3000,
+          style: {
+            background: "#333",
+            color: "#fff",
+            borderRadius: "8px",
+          },
+        });
         setOTPSuccess(false);
         setIsLoading(false);
       }
-    } catch (error) {
-      setOTPMessage("Network error. Please try again");
+    } 
+    catch (error) {
+      toast.error("Network error. Please try again", {
+        duration: 3000,
+        style: {
+          background: "#333",
+          color: "#fff",
+          borderRadius: "8px",
+        },
+      });
       setOTPSuccess(false);
       setIsLoading(false);
     }

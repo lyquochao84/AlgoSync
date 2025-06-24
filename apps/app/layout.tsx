@@ -2,7 +2,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 
-import OnboardingLayout from '@/components/OnboardingLayout/OnboardingLayout';
+import NestedLayout from '@/components/NestedLayout/NestedLayout';
 
 export const metadata: Metadata = {
   title: 'AlgoSync',
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <OnboardingLayout>{children}</OnboardingLayout>
+        <NestedLayout>{children}</NestedLayout>
       </body>
     </html>
   );
