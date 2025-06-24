@@ -80,7 +80,7 @@ const UserInfo: React.FC<UserInfoProps> = ({
             </label>
             <input
               type="text"
-              placeholder="e.g. Kevin"
+              placeholder="Your name in the SyncVerse"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -116,7 +116,7 @@ const UserInfo: React.FC<UserInfoProps> = ({
             </label>
             <input
               type="text"
-              placeholder="Short and sweet — who are you?"
+              placeholder="Short and sweet"
               value={headline}
               onChange={(e) => setHeadline(e.target.value)}
             />

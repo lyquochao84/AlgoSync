@@ -4,6 +4,7 @@
 
 :root {
   --theme-color: #1a1a1a;
+  --dashboard-theme-color: #141313;
   --second-theme-color: #d7c0a3;
   --font-color: #eae7e1;
 
@@ -150,15 +151,21 @@ table {
   border-spacing: 0;
 }
 
+.dashboard-wrapper,
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+.dashboard-content-wrapper,
 .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem; 
   flex: 1;
+}
+
+.dashboard-wrapper {
+  background-color: var(--dashboard-theme-color);
 }

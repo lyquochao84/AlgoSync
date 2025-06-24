@@ -1,0 +1,121 @@
+.profile_container {
+  width: 16.25rem;
+  background-color: #171716;
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.avatar_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.avatar {
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--second-theme-color);
+}
+
+.name {
+  font-size: 2.4rem;
+  margin-top: 0.5rem;
+}
+
+.handle {
+  color: #70706f;
+  font-size: 1.6rem;
+}
+
+.follow_stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.follow_stats span {
+  background-color: #1d1d1d;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.follow_stats span:hover {
+  border-color: var(--second-theme-color);
+  background-color: #1f1f1f; 
+}
+
+.follow_stats span p {
+  font-size: 1.2rem;
+  color: #a5a2a0;
+}
+
+.profile_button {
+  margin-top: 0.6rem;
+  padding: 0.8rem 5rem;
+  border: 1px solid transparent;
+  background-color: #1b1c1b;
+  border-radius: 10px;
+  color: var(--font-color);
+  font-weight: 100;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: "Jersey 15", sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.profile_button:hover {
+  border-color: var(--second-theme-color);
+  background-color: #1f1f1f; 
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.house_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.house_tags span {
+  background-color: #262525;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--font-color);
+}
+
+.blog_post {
+  background-color: #121212;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.blog_title {
+  font-weight: 500;
+}
+
+.blog_meta {
+  font-size: 0.75rem;
+  color: gray;
+}

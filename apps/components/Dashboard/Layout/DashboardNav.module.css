@@ -1,0 +1,207 @@
+.dashboard_navigation_wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--dashboard-theme-color);
+}
+
+.dashboard_navigation_bar {
+  position: relative; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  height: 70px; 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+}
+
+/* LEFT SECTION */
+.dashboard_navigation_left_part {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coffee_logo_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dashboard_navigation_logo {
+  width: auto;
+  height: 60px;
+  transition: transform 0.3s ease;
+  transform-origin: center bottom;
+  margin-bottom: 1.2rem;
+}
+
+.dashboard_navigation_logo:hover {
+  transform: rotate(-5deg);
+  cursor: pointer;
+}
+
+.coffee_logo_wrapper::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 8px;
+  height: 20px;
+  background: radial-gradient(white, transparent);
+  opacity: 0;
+  transform: translateX(-50%) translateY(0);
+  filter: blur(3px);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.coffee_logo_wrapper:hover::after {
+  animation: steamUp 1.5s ease-out forwards;
+  opacity: 1;
+}
+
+.search_wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search_icon {
+  position: absolute;
+  left: 12px;
+  color: var(--font-color);
+  font-size: 1.4rem;
+  pointer-events: none;
+}
+
+.dashboard_search_input {
+  width: 13.125rem;
+  height: 2.5rem;
+  padding: 0rem 0.8rem 0rem 2.5rem; 
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-color: #181819;
+  color: var(--font-color);
+  font-size: 1.6rem;
+  outline: none;
+  transition: border 0.2s ease, background-color 0.2s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  margin: 0; 
+}
+
+.dashboard_search_input::placeholder {
+  color: var(--font-color);
+}
+
+.dashboard_search_input:focus {
+  background-color: transparent;
+}
+
+/* CENTER SECTION */
+.dashboard_navigation_mid_part {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  z-index: 1;
+}
+
+.tab_button {
+  background: none;
+  border: none;
+  color: var(--font-color);
+  font-size: 1.8rem;
+  padding: 6px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab_button:hover,
+.tab_button.active {
+  color: var(--font-color); 
+  border-color: var(--second-theme-color); 
+}
+
+.tab_button_icon {
+  margin-right: 0.2rem;
+  margin-top: 0.1rem;
+  color: var(--font-color);
+}
+
+.veritcal_separate {
+  font-weight: 600;
+  color: var(--second-theme-color);
+}
+
+.tab_button:hover,
+.tab_button.active {
+  border-color: var(--second-theme-color);
+}
+
+.dropdown_icon {
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+/* RIGHT SECTION */
+.dashboard_navigation_right_part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 45px;
+  padding: 0 1rem;
+  border-radius: 9999px;
+  background-color: #191818;
+  border: 1px solid transparent;
+  margin: 0;
+}
+
+.notification_button,
+.category_button,
+.more_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.6rem; 
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.notification_button:hover,
+.category_button:hover,
+.more_button:hover {
+ background-color: rgba(255, 255, 255, 0.1); 
+} 
+
+/* Coffee steam animation */
+@keyframes steamUp {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-40px);
+    opacity: 0;
+  }
+}
