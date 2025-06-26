@@ -1,0 +1,139 @@
+.profile_card {
+  border-radius: 1rem;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 1rem;
+  color: var(--font-color);
+  position: relative;
+  background-color: var(--dashboard-section-color);
+}
+
+.cover {
+  width: 100%;
+  height: 120px;
+  background: url('../../../../public/AlgoSync_Background.png') center/cover no-repeat;
+  position: relative;
+}
+
+.avatar_and_stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -3rem;
+  padding: 0 1rem;
+}
+
+.avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 3px solid #1a1a1a;
+  object-fit: cover;
+  background-color: white;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+.name {
+  font-size: 2.4rem;
+  margin-top: 1rem;
+}
+
+.bio {
+  font-size: 1.2rem;
+  color: #ccc;
+  text-align: center;
+  margin-top: 0.8rem;
+  margin-bottom: 1.6rem;
+  padding: 0 1rem;
+  max-width: 90%;
+  word-break: break-word;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, auto); 
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.stats_link {
+  background-color: #1d1d1d;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  box-shadow: var(--button-box-shadow);
+}
+
+.stats_link:hover {
+  border-color: var(--second-theme-color);
+  background-color: #1f1f1f;
+  cursor: pointer;
+}
+
+.stats_link p {
+  font-size: 1.18rem;
+  color: var(--font-color);
+}
+
+.profile_button {
+  margin-top: 1rem;
+  padding: 0.8rem 5rem;
+  border: 1px solid transparent;
+  background-color: #1b1c1b;
+  border-radius: 10px;
+  color: var(--font-color);
+  font-weight: 100;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: "Jersey 15", sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  box-shadow: var(--button-box-shadow);
+}
+
+.profile_button:hover {
+  border-color: var(--second-theme-color);
+  background-color: #1f1f1f; 
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.house_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.house_tags span {
+  background-color: #262525;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--font-color);
+}
+
+.blog_post {
+  background-color: #121212;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.blog_title {
+  font-weight: 500;
+}
+
+.blog_meta {
+  font-size: 0.75rem;
+  color: gray;
+}
