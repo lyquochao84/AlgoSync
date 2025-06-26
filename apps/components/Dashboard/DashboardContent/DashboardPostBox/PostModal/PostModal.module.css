@@ -1,0 +1,158 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  position: relative;
+  background-color: #121212;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 600px;
+  padding: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  animation: fadeIn 0.25s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 550;
+  color: var(--font-color);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--font-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.modalBody {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.textareaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.modalTextarea {
+  width: 93.7%;
+  min-height: 120px;
+  border-radius: 0.5rem;
+  border: 1px solid #333;
+  background-color: var(--theme-color);
+  padding: 1rem;
+  color: var(--font-color);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1.3rem;
+}
+
+.emojiButton {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.emojiButton:hover {
+  color: var(--second-theme-color);
+}
+
+.postOptions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.optionButton {
+  flex: 1;
+  min-width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  background-color: var(--theme-color);
+  color: var(--font-color);
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.optionButton:hover {
+  background-color: #262626;
+  color: var(--font-color);
+}
+
+.active {
+  border: 1px solid var(--second-theme-color);
+  color: var(--font-color);
+  background-color: var(--theme-color);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.postButton {
+  background-color: var(--second-theme-color);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  color: var(--theme-color);
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1.4rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.postButton:hover {
+  opacity: 0.85;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

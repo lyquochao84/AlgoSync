@@ -1,0 +1,12 @@
+.rightPanel_wrapper {
+  width: 15.2rem;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  height: 100vh;            
+  overflow-y: auto; 
+}
