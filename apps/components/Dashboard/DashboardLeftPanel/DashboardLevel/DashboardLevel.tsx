@@ -1,7 +1,7 @@
 import React, { JSX } from "react";
 import styles from "./DashboardLevel.module.css";
 
-import HouseIcon from "@/public/Fox.png";
+import HouseIcon from "@/public/Dashboard Logo/web.png";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -23,10 +23,10 @@ const DashboardLevel: React.FC = (): JSX.Element => {
           <div className={styles.progress_bar_background}>
             <div
               className={styles.progress_bar_fill}
-              style={{ width: "65%" }}
+              style={{ width: "1%" }}
             ></div>
           </div>
-          <span className={styles.progress_percentage}>65%</span>
+          <span className={styles.progress_percentage}>1%</span>
         </div>
       </div>
 

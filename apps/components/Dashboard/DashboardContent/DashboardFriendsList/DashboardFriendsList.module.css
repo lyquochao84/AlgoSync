@@ -1,0 +1,66 @@
+/* Wrapper for the horizontal friend list row */
+.friendListRow {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0rem;
+  margin-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--second-theme-color) transparent;
+}
+
+.friendListRow::-webkit-scrollbar {
+  height: 8px;
+}
+
+.friendListRow::-webkit-scrollbar-thumb {
+  background-color: var(--second-theme-color);
+  border-radius: 4px;
+}
+
+.friendListRow::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.friendAvatarWrapper {
+  flex: 0 0 calc((100% - 3.5rem) / 6); 
+  max-width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.friendAvatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 2px solid #333;
+  object-fit: cover;
+  transition: 0.2s ease;
+}
+
+.friendAvatar:hover {
+  border-color: var(--second-theme-color);
+  transform: scale(1.05);
+}
+
+.friendName {
+  font-size: 1.2rem;
+  color: var(--font-color);
+  white-space: nowrap;
+  text-align: center;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
