@@ -10,8 +10,8 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { LuTextSearch } from "react-icons/lu";
 import { FaRegNewspaper } from "react-icons/fa";
 import { PiCards } from "react-icons/pi";
-import { FaBars } from "react-icons/fa";
 import { IoIosMore } from "react-icons/io";
+import { TbMessage2Code } from "react-icons/tb";
 
 const DashboardNav: React.FC = (): JSX.Element => {
   return (
@@ -58,7 +58,7 @@ const DashboardNav: React.FC = (): JSX.Element => {
               <IoNotificationsOutline className={styles.icon} />
             </button>
             <button className={styles.category_button}>
-              <FaBars className={styles.icon} />
+              <TbMessage2Code className={styles.icon} />
             </button>
             <button className={styles.more_button}>
               <IoIosMore className={styles.icon} />

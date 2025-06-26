@@ -1,0 +1,93 @@
+.level_card {
+  padding: 1.5rem;
+  /* border-radius: 12px; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.house_header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.house_icon {
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+}
+
+.house_name {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--font-color);
+}
+
+.level_name {
+  font-size: 1.6rem;
+  color: var(--font-color);
+}
+
+.level_name strong {
+  color: var(--web-team);
+}
+
+.progress_bar_wrapper {
+  width: 100%;
+}
+
+.progress_bar_row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between bar and percentage */
+}
+
+.progress_bar_background {
+  flex-grow: 1;
+  height: 0.7rem;
+  background-color: #2a2a2a;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress_bar_fill {
+  height: 100%;
+  background-color: var(--web-team);
+  transition: width 0.4s ease;
+  border-radius: 9999px;
+}
+
+.progress_percentage {
+  font-size: 1.8rem;
+  color: var(--web-team);
+  white-space: nowrap;
+}
+
+.view_team_button {
+  display: flex;
+  background-color: #1f1f1f;
+  border: 1px solid var(--web-team);
+  border-radius: 9999px; 
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  box-shadow: var(--button-box-shadow);
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.view_team_button:hover {
+  background-color: #262626;
+  border-color: var(--second-theme-color);
+  cursor: pointer;
+}
+
+.view_team_button p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--font-color);
+  font-family: "Jersey 15", sans-serif;
+  margin: 0; 
+}
