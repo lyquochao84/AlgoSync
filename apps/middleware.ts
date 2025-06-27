@@ -6,7 +6,7 @@ const JWT_SECRET = new TextEncoder().encode(
 );
 
 const protectedPaths = ["/onboarding", "/dashboard"];
-const publicPaths = ["/", "/about", "/term", "/privacy"];
+const publicPaths = ["/", "/about"];
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

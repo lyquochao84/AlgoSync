@@ -1,0 +1,46 @@
+.footer_inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 45px;
+  padding-bottom: 1.2rem;
+  border-radius: 9999px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin: 0;
+}
+
+.footer_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.footer_button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.linkedIn_icon {
+  color: #0077b5;
+  font-size: 1.6rem;
+}
+
+.discord_icon {
+  color: #7289da;
+  font-size: 1.6rem;
+}
+
+.youtube_icon {
+  color: #cd201f;
+  font-size: 1.6rem;
+}

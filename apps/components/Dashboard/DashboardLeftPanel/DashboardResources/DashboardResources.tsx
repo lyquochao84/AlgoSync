@@ -6,11 +6,11 @@ import Link from "next/link";
 import { RiArticleLine } from "react-icons/ri";
 import { MdOndemandVideo } from "react-icons/md";
 import { AiOutlineTeam } from "react-icons/ai";
-import { SiAwsorganizations } from "react-icons/si";
 import { FaRegBuilding } from "react-icons/fa";
 import { LuHandshake } from "react-icons/lu";
 import { IoBookmarksOutline } from "react-icons/io5";
-import { FaPeopleArrows } from "react-icons/fa";
+import { FaRegNewspaper } from "react-icons/fa";
+import { LiaBusinessTimeSolid } from "react-icons/lia";
 
 const DashboardResources: React.FC = (): JSX.Element => {
   return (
@@ -24,7 +24,13 @@ const DashboardResources: React.FC = (): JSX.Element => {
       <div className={styles.dashboard_resources_item}>
         <Link href="/dashboard" className={styles.dashboard_resources_link}>
           <MdOndemandVideo className={styles.dashboard_resources_icon} />
-          <span>Top Videos</span>
+          <span>Popular Videos</span>
+        </Link>
+      </div>
+      <div className={styles.dashboard_resources_item}>
+        <Link href="/dashboard" className={styles.dashboard_resources_link}>
+          <FaRegNewspaper className={styles.dashboard_resources_icon} />
+          <span>Tech News</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
@@ -35,8 +41,8 @@ const DashboardResources: React.FC = (): JSX.Element => {
       </div>
       <div className={styles.dashboard_resources_item}>
         <Link href="/dashboard" className={styles.dashboard_resources_link}>
-          <SiAwsorganizations className={styles.dashboard_resources_icon} />
-          <span>Organizations</span>
+          <LiaBusinessTimeSolid className={styles.dashboard_resources_icon} />
+          <span>Job Boards</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
@@ -49,12 +55,6 @@ const DashboardResources: React.FC = (): JSX.Element => {
         <Link href="/dashboard" className={styles.dashboard_resources_link}>
           <LuHandshake className={styles.dashboard_resources_icon} />
           <span>Projects</span>
-        </Link>
-      </div>
-      <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
-          <FaPeopleArrows className={styles.dashboard_resources_icon} />
-          <span>Co-Founder</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>

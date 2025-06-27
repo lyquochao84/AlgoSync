@@ -66,6 +66,16 @@
   resize: vertical;
   font-family: inherit;
   font-size: 1.3rem;
+  overflow-y: auto; 
+}
+
+.modalTextarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modalTextarea::-webkit-scrollbar-thumb {
+  background-color: var(--second-theme-color);
+  border-radius: 10px;
 }
 
 .emojiButton {

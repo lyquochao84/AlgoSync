@@ -7,7 +7,6 @@ import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 
 import DashboardNav from "../Dashboard/Layout/DashboardNav";
-import DashboardFooter from "../Dashboard/Layout/DashboardFooter";
 
 export default function NestedLayout({
   children,
@@ -36,7 +35,6 @@ export default function NestedLayout({
         <DashboardNav />
         <Toaster position="top-center" reverseOrder={false} />
         <div className="dashboard-content-wrapper">{children}</div>
-        <DashboardFooter />
       </div>
     );
   }
