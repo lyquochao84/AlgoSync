@@ -5,6 +5,7 @@ import styles from "./DashboardLeftPanel.module.css";
 import DashboardProfile from "./DashboardProfile/DashboardProfile";
 import DashboardLevel from "./DashboardLevel/DashboardLevel";
 import DashboardResources from "./DashboardResources/DashboardResources";
+import DashboardLeftFooter from "./DashboardLeftFooter/DashboardLeftFooter";
 
 const DashboardLeftPanel: React.FC = (): JSX.Element => {
   return (
@@ -15,6 +16,8 @@ const DashboardLeftPanel: React.FC = (): JSX.Element => {
       <DashboardLevel />
       <hr className={styles.horizontal_divider} />
       <DashboardResources />
+      <hr className={styles.horizontal_divider} />
+      <DashboardLeftFooter />
     </div>
   );
 };

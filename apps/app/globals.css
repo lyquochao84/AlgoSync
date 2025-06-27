@@ -171,6 +171,10 @@ table {
   flex: 1;
 }
 
+.dashboard-content-wrapper {
+  padding: 0; 
+}
+
 .dashboard-wrapper {
   background-color: var(--dashboard-theme-color);
 }

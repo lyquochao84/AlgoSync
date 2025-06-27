@@ -9,8 +9,8 @@ export default function DashboardContent() {
     <div className={styles.dashboard}>
       <DashboardFriendsList />
       <div className={styles.dashboard_main_content}>
-        {/* <DashboardPostBox /> */}
-        <DashboardBlogBox />
+        <DashboardPostBox />
+        {/* <DashboardBlogBox /> */}
       </div>
     </div>
   );

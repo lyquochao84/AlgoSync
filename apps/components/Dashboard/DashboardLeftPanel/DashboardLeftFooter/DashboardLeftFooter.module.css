@@ -1,0 +1,25 @@
+.dashboard_left_footer {
+  padding: 0rem 1rem 1.4rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.dashboard_left_terms_privacy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard_left_link {
+  color: var(--second-theme-color);
+  font-size: 1.2rem;
+}
+
+.dashboard_left_footer p {
+  color: #6e6c6c;
+  text-align: center;
+  font-size: 1.2rem;
+}
