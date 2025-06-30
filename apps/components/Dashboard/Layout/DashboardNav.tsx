@@ -1,4 +1,6 @@
-import React, { JSX } from "react";
+"use client";
+
+import React, { JSX, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -12,8 +14,14 @@ import { FaRegNewspaper } from "react-icons/fa";
 import { PiCards } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
 import { TbMessage2Code, TbCategory } from "react-icons/tb";
+import SearchModal from "@/components/SearchModal/SearchModal";
 
 const DashboardNav: React.FC = (): JSX.Element => {
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
+  const openSearchModal = () => setIsSearchOpen(true);
+  const closeSearchModal = () => setIsSearchOpen(false);
+
   return (
     <>
       <nav className={styles.dashboard_navigation_wrapper}>
@@ -35,6 +43,7 @@ const DashboardNav: React.FC = (): JSX.Element => {
                 type="text"
                 placeholder="Search..."
                 className={styles.dashboard_search_input}
+                onFocus={openSearchModal}
               />
             </div>
           </div>
@@ -69,6 +78,7 @@ const DashboardNav: React.FC = (): JSX.Element => {
           </div>
         </div>
       </nav>
+      {isSearchOpen && <SearchModal onClose={closeSearchModal} />}
     </>
   );
 };
