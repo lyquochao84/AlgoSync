@@ -1,0 +1,95 @@
+.search_modal_overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: zoomOutBackground 0.3s ease;
+}
+
+/* Modal box itself */
+.search_modal_content {
+  background-color: var(--dashboard-theme-color);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  color: var(--font-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  animation: zoomInModal 0.3s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.search_modal_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search_modal_header h2 {
+  color: var(--second-theme-color);
+  font-size: 2rem;
+}
+
+.search_modal_close {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding-top: 0.2rem;
+}
+
+.search_modal_close:hover {
+  color: var(---theme-color);
+}
+
+/* Search input inside modal */
+.search_modal_input {
+  width: 93%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--second-theme-color);
+  background-color: var(--dashboard-theme-color);
+  color: var(--font-color);
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.search_results {
+  color: #aaa;
+}
+
+/* Animations */
+@keyframes zoomOutBackground {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes zoomInModal {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

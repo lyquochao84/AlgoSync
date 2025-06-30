@@ -1,0 +1,54 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #333;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+}
+
+.action {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.action:hover {
+  color: #fff;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.count {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* Optional: Different color accents */
+.boost:hover .icon {
+  color: #f97316;
+}
+
+.reply:hover .icon {
+  color: #3b82f6;
+}
+
+.repost:hover .icon {
+  color: #a855f7;
+}
+
+.share:hover .icon {
+  color: #dcd066;
+}
