@@ -4,9 +4,9 @@ import styles from "./HouseLeaderboard.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-import VisionNixLogo from "@/public/Dashboard Logo/game.png";
-import NeuronaLogo from "@/public/Dashboard Logo/ai.png";
-import FirelockLogo from "@/public/Dashboard Logo/cyber.png";
+import VisionNixLogo from "@/public/Dashboard_Logo/game.png";
+import NeuronaLogo from "@/public/Dashboard_Logo/ai.png";
+import FirelockLogo from "@/public/Dashboard_Logo/cyber.png";
 
 const houses = [
   { name: "Visionix", color: "#d94e4e", image: VisionNixLogo },

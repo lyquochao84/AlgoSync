@@ -1,11 +1,11 @@
-import webLogo from "@/public/Onboarding Logo/web.png";
-import aiLogo from "@/public/Onboarding Logo/ai.png";
-import mobileLogo from "@/public/Onboarding Logo/mobile.png";
-import cyberLogo from "@/public/Onboarding Logo/cyber.png";
-import infraLogo from "@/public/Onboarding Logo/cloud.png";
-import dataLogo from "@/public/Onboarding Logo/data.png";
-import gameLogo from "@/public/Onboarding Logo/game.png";
-import quantLogo from "@/public/Onboarding Logo/fintech.png";
+import webLogo from "@/public/Onboarding_Logo/web.png";
+import aiLogo from "@/public/Onboarding_Logo/ai.png";
+import mobileLogo from "@/public/Onboarding_Logo/mobile.png";
+import cyberLogo from "@/public/Onboarding_Logo/cyber.png";
+import infraLogo from "@/public/Onboarding_Logo/cloud.png";
+import dataLogo from "@/public/Onboarding_Logo/data.png";
+import gameLogo from "@/public/Onboarding_Logo/game.png";
+import quantLogo from "@/public/Onboarding_Logo/fintech.png";
 import { TeamName } from "@/types/OnboardingModal/ChooseTeam/ChooseTeam";
 
 export const teamData: Record<TeamName, {

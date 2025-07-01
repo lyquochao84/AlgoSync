@@ -48,7 +48,7 @@
 }
 
 .search_modal_close:hover {
-  color: var(---theme-color);
+  color: var(--font-color);
 }
 
 /* Search input inside modal */
@@ -165,10 +165,21 @@
   color: #111;
 }
 
+.recented_searches_wrapper {
+  display: flex;
+}
+
 .recent_searches_title {
   color: var(--second-theme-color);
   font-size: 1.5rem;
   margin-left: 0.21rem;
+}
+
+.recent_searches_icon {
+  color: var(--second-theme-color);
+  font-size: 1.5rem;
+  margin-left: 0.4rem;
+  margin-top: 0.02rem;
 }
 
 .no_results {

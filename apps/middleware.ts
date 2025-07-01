@@ -5,7 +5,26 @@ const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || "algosync_jwt_secret"
 );
 
-const protectedPaths = ["/onboarding", "/dashboard"];
+const protectedPaths = [
+  "/onboarding",
+  "/dashboard",
+  "/profile",
+  "/team",
+  "/top-blogs",
+  "/popular-videos",
+  "/tech-news",
+  "/explore-teams",
+  "/job-boards",
+  "/companies-info",
+  "/projects-showcase",
+  "/saved-resources",
+  "/terms",
+  "/privacy",
+  "/house-leaderboard",
+  "/personal-leaderboard",
+  "/suggested-dev",
+  "/search",
+];
 const publicPaths = ["/", "/about"];
 
 export async function middleware(req: NextRequest) {
@@ -60,5 +79,25 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/onboarding/:path*", "/dashboard/:path*"],
+  matcher: [
+    "/",
+    "/onboarding/:path*",
+    "/dashboard/:path*",
+    "/profile/:path*",
+    "/team/:path*",
+    "/top-blogs/:path*",
+    "/popular-videos/:path*",
+    "/tech-news/:path*",
+    "/explore-teams/:path*",
+    "/job-boards/:path*",
+    "/companies-info/:path*",
+    "/projects-showcase/:path*",
+    "/saved-resources/:path*",
+    "/terms/:path*",
+    "/privacy/:path*",
+    "/house-leaderboard/:path*",
+    "/personal-leaderboard/:path*",
+    "/suggested-dev/:path*",
+    "/search/:path*",
+  ],
 };

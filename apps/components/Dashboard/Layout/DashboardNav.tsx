@@ -17,13 +17,32 @@ import { TbMessage2Code, TbCategory } from "react-icons/tb";
 
 import SearchModal from "@/components/SearchModal/SearchModal";
 import { useDashboardTab } from "@/context/Dashboard/DashboardTabContext";
+import NotificationModal from "@/components/NotificationModal/NotificationModal";
+import CategoryModal from "@/components/CategoryModal/CategoryModal";
+import MessageModal from "@/components/MessageModal/MessageModal";
 
 const DashboardNav: React.FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState<boolean>(false);
+  const [isCategoryOpen, setIsCategoryOpen] = useState<boolean>(false);
+  const [isMessageOpen, setIsMessageOpen] = useState<boolean>(false);
   const { activeTab, setActiveTab } = useDashboardTab();
 
+  // Search Modal
   const openSearchModal = () => setIsSearchOpen(true);
   const closeSearchModal = () => setIsSearchOpen(false);
+
+  // Notification Modal
+  const openNotificationModal = () => setIsNotificationOpen(true);
+  const closeNotificationModal = () => setIsNotificationOpen(false);
+
+  // Category Modal
+  const openCategoryModal = () => setIsCategoryOpen(true);
+  const closeCategoryModal = () => setIsCategoryOpen(false);
+
+  // Message Modal
+  const openMessageModal = () => setIsMessageOpen(true);
+  const closeMessageModal = () => setIsMessageOpen(false);
 
   return (
     <>
@@ -76,13 +95,13 @@ const DashboardNav: React.FC = (): JSX.Element => {
 
           {/* RIGHT */}
           <div className={styles.dashboard_navigation_right_part}>
-            <button className={styles.notification_button}>
+            <button className={styles.notification_button} onClick={openNotificationModal}>
               <IoNotificationsOutline className={styles.icon} />
             </button>
-            <button className={styles.category_button}>
+            <button className={styles.category_button} onClick={openCategoryModal}>
               <TbCategory className={styles.icon} />
             </button>
-            <button className={styles.category_button}>
+            <button className={styles.category_button} onClick={openMessageModal}>
               <TbMessage2Code className={styles.icon} />
             </button>
             <button className={styles.more_button}>
@@ -92,6 +111,9 @@ const DashboardNav: React.FC = (): JSX.Element => {
         </div>
       </nav>
       {isSearchOpen && <SearchModal onClose={closeSearchModal} />}
+      {isNotificationOpen && <NotificationModal onClose={closeNotificationModal} />}
+      {isCategoryOpen && <CategoryModal onClose={closeCategoryModal} />}
+      {isMessageOpen && <MessageModal onClose={closeMessageModal} />}
     </>
   );
 };
