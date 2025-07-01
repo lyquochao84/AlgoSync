@@ -80,4 +80,5 @@ export interface PostProps {
 
 export interface DashboardPostContentProps {
   posts: Post[];
+  refreshKey: number;
 }

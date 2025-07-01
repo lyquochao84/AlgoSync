@@ -1,6 +1,7 @@
 import React, { JSX } from "react";
 import styles from "./PersonalLeaderboard.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const houses = [
   { name: "Visionix", color: "#d94e4e" },
@@ -27,11 +28,13 @@ const PersonalLeaderboard: React.FC = (): JSX.Element => {
             return (
               <li key={person.name} className={styles.personalItem}>
                 <div className={styles.personalItem_header}>
-                  <img
+                  <Image
                     className={styles.personal_leaderboard_image}
                     src={person.image}
                     alt={`${person.name} avatar`}
                     style={{ borderColor: color }}
+                    width={51.2}
+                    height={51.2}
                   />
                   <span
                     className={styles.personal_leaderboard_name}

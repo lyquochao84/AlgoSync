@@ -1,10 +1,14 @@
+"use client";
+
 import styles from "./DashboardContent.module.css";
 
 import DashboardFriendsList from "./DashboardFriendsList/DashboardFriendsList";
 import DashboardPostBox from "./DashboardPostSection/DashboardPostBox/DashboardPostBox";
 import DashboardBlogBox from "./DashboardBlogsSection/DashboardBlogBox/DashboardBlogBox";
 import DashboardPostContent from "./DashboardPostSection/DashboardPostContent/DashboardPostContent";
+
 import { Post } from "@/types/DashboardPostContent/DashboardPostContent";
+import { useDashboardTab } from "@/context/Dashboard/DashboardTabContext";
 
 export const examplePosts: Post[] = [
   {
@@ -41,7 +45,8 @@ export const examplePosts: Post[] = [
     type: "video",
     text: "This is my newest video! Please check it out! Insider spent three days at the Marine Corps Recruit Depot in Parris Island, South Carolina, with a class of students during week six of their nine-week training to see what it takes to become a drill instructor.",
     video: {
-      thumbnail: "https://cdn.prod.website-files.com/61eff6b3236cf9057b6c1fac/636dce409ef3ba3788596d57_3oDhfXeB.png",
+      thumbnail:
+        "https://cdn.prod.website-files.com/61eff6b3236cf9057b6c1fac/636dce409ef3ba3788596d57_3oDhfXeB.png",
       title: "Understanding React Server Components",
       source: "YouTube",
       link: "https://www.youtube.com/watch?v=kgrZj_HB2YE&t=13s&ab_channel=AlgoSync",
@@ -90,17 +95,26 @@ export const examplePosts: Post[] = [
 ];
 
 export default function DashboardContent() {
+  const { activeTab, refreshKey } = useDashboardTab();
+
   return (
     <div className={styles.dashboard}>
       <DashboardFriendsList />
       <div className={styles.dashboard_main_content}>
-        <>
-          <DashboardPostBox />
-          <DashboardPostContent posts={examplePosts} />
-        </>
-        {/* <div className={styles.dashboard_blogs_content}> */}
-          {/* <DashboardBlogBox /> */}
-        {/* </div> */}
+        {activeTab === "posts" && (
+          <>
+            <DashboardPostBox />
+            <DashboardPostContent
+              posts={examplePosts}
+              refreshKey={refreshKey}
+            />
+          </>
+        )}
+        {activeTab === "blogs" && (
+          <div className={styles.dashboard_blogs_content}>
+            <DashboardBlogBox />
+          </div>
+        )}
       </div>
     </div>
   );

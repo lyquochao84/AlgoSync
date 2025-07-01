@@ -7,6 +7,7 @@ import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 
 import DashboardNav from "../Dashboard/Layout/DashboardNav";
+import { DashboardTabProvider } from "@/context/Dashboard/DashboardTabContext";
 
 export default function NestedLayout({
   children,
@@ -31,11 +32,13 @@ export default function NestedLayout({
   // Dashboard Layout
   if (isDashboard) {
     return (
-      <div className="dashboard-wrapper">
-        <DashboardNav />
-        <Toaster position="top-center" reverseOrder={false} />
-        <div className="dashboard-content-wrapper">{children}</div>
-      </div>
+      <DashboardTabProvider>
+        <div className="dashboard-wrapper">
+          <DashboardNav />
+          <Toaster position="top-center" reverseOrder={false} />
+          <div className="dashboard-content-wrapper">{children}</div>
+        </div>
+      </DashboardTabProvider>
     );
   }
 

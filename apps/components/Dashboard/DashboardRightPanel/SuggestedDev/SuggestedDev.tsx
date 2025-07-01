@@ -2,6 +2,7 @@ import React, { JSX } from "react";
 
 import styles from "./SuggestedDev.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const people = [
   {
@@ -33,10 +34,12 @@ const SuggestedDev: React.FC = (): JSX.Element => {
       <ul className={styles.list}>
         {people.map((person) => (
           <li key={person.name} className={styles.item}>
-            <img
+            <Image
               src={person.image}
               alt={person.name}
               className={styles.avatar}
+              width={51.2}
+              height={51.2}
             />
 
             <div className={styles.info}>

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./TechNews.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const news = [
   {
@@ -33,10 +34,12 @@ const TechNews: React.FC = () => {
         {news.map((item, index) => (
           <li key={index} className={styles.news_item}>
             <a href={item.link} target="_blank" rel="noopener noreferrer" className={styles.news_link}>
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
                 className={styles.news_image}
+                width={500}
+                height={500}
               />
               <span className={styles.news_title}>{item.title}</span>
             </a>

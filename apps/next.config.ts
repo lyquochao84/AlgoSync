@@ -19,6 +19,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.prod.website-files.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'graphqleditorcms.fra1.cdn.digitaloceanspaces.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'static01.nyt.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'aps.autodesk.com'
       }
     ],
   },
