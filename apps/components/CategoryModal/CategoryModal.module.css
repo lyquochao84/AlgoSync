@@ -1,0 +1,141 @@
+.modal_overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: zoomOutBackground 0.3s ease;
+}
+
+.modal_content {
+  background-color: var(--dashboard-section-color);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  color: var(--font-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  animation: zoomInModal 0.3s ease;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.modal_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal_header_title_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.modal_header_icon {
+  color: var(--second-theme-color);
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.modal_title {
+  color: var(--second-theme-color);
+  font-size: 2.2rem;
+}
+
+.close_button {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding-top: 0.2rem;
+}
+
+.close_button:hover {
+  color: var(--font-color);
+}
+
+.category_modal_container {
+  display: flex;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.category_tabs {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  margin-right: 1rem;
+  justify-content: center;
+}
+
+.category_tab {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  color: var(--font-color);
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.category_tab:hover {
+  opacity: 0.85;
+}
+
+.active_tab {
+  color: var(--second-theme-color);
+}
+
+.vertical_divider {
+  width: 2px;
+  background-color: #444;
+  margin: 0 1rem;
+}
+
+.category_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.category_item {
+  padding: 0.6rem 0.4rem;
+  font-size: 1.6rem;
+  color: var(--font-color);
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.category_item:hover {
+  color: var(--second-theme-color);
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes zoomOutBackground {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes zoomInModal {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

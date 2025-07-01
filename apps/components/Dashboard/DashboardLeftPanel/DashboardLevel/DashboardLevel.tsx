@@ -1,7 +1,7 @@
 import React, { JSX } from "react";
 import styles from "./DashboardLevel.module.css";
 
-import HouseIcon from "@/public/Dashboard Logo/web.png";
+import HouseIcon from "@/public/Dashboard_Logo/web.png";
 
 import Image from "next/image";
 import Link from "next/link";

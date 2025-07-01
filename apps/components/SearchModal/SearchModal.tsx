@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
 import styles from "./SearchModal.module.css";
 
 import { SearchModalProps } from "@/types/SearchModal/SearchModal";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import Link from "next/link";
-import Image from "next/image";
+
+import { MdOutlineRecentActors } from "react-icons/md";
 
 const mockResults = [
   {
@@ -103,7 +106,10 @@ const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
         <div className={styles.search_results}>
           {query.trim() === "" ? (
             <>
-              <h3 className={styles.recent_searches_title}>Recent Searches</h3>
+              <div className={styles.recented_searches_wrapper}>
+                <h3 className={styles.recent_searches_title}>Recent Searches</h3>
+                <MdOutlineRecentActors className={styles.recent_searches_icon} />
+              </div>
               {mockResults.map((dev) => (
                 <Link
                   href="/dashboard"
