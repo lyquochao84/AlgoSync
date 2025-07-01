@@ -14,10 +14,13 @@ import { FaRegNewspaper } from "react-icons/fa";
 import { PiCards } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
 import { TbMessage2Code, TbCategory } from "react-icons/tb";
+
 import SearchModal from "@/components/SearchModal/SearchModal";
+import { useDashboardTab } from "@/context/Dashboard/DashboardTabContext";
 
 const DashboardNav: React.FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const { activeTab, setActiveTab } = useDashboardTab();
 
   const openSearchModal = () => setIsSearchOpen(true);
   const closeSearchModal = () => setIsSearchOpen(false);
@@ -50,12 +53,22 @@ const DashboardNav: React.FC = (): JSX.Element => {
 
           {/* CENTER */}
           <div className={styles.dashboard_navigation_mid_part}>
-            <button className={styles.tab_button}>
+            <button
+              className={`${styles.tab_button} ${
+                activeTab === "blogs" ? styles.active : ""
+              }`}
+              onClick={() => setActiveTab("blogs")}
+            >
               <FaRegNewspaper className={styles.tab_button_icon} />
               Blogs
             </button>
             <span className={styles.veritcal_separate}>|</span>
-            <button className={styles.tab_button}>
+            <button
+              className={`${styles.tab_button} ${
+                activeTab === "posts" ? styles.active : ""
+              }`}
+              onClick={() => setActiveTab("posts")}
+            >
               <PiCards className={styles.tab_button_icon} />
               Posts
             </button>

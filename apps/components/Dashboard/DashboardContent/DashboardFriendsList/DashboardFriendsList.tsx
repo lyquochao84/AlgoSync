@@ -1,4 +1,5 @@
 import React, { JSX } from "react";
+import Image from "next/image";
 
 import styles from "./DashboardFriendsList.module.css";
 // import Image from "next/image";
@@ -24,7 +25,13 @@ const DashboardFriendsList: React.FC = (): JSX.Element => {
     <div className={styles.friendListRow}>
       {friends.map((friend, index) => (
         <div key={index} className={styles.friendAvatarWrapper}>
-          <img src={friend.avatar} className={styles.friendAvatar} alt={ `${friend.name}` } />
+          <Image
+            src={friend.avatar}
+            alt={friend.name}
+            width={56}
+            height={56}
+            className={styles.friendAvatar}
+          />
           <p className={styles.friendName}>
             {friend.name.includes(" ")
               ? `${friend.name.split(" ")[0]}...`
