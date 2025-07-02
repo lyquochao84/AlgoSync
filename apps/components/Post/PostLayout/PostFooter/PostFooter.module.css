@@ -44,11 +44,3 @@
 .reply:hover .icon {
   color: #3b82f6;
 }
-
-.repost:hover .icon {
-  color: #a855f7;
-}
-
-.share:hover .icon {
-  color: #dcd066;
-}

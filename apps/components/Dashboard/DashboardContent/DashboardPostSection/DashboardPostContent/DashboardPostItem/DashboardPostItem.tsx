@@ -10,7 +10,6 @@ import PostFooter from "@/components/Post/PostLayout/PostFooter/PostFooter";
 import PostText from "@/components/Post/PostTypes/PostText/PostText";
 import PostPhoto from "@/components/Post/PostTypes/PostPhoto/PostPhoto";
 import PostVideo from "@/components/Post/PostTypes/PostVideo/PostVideo";
-import PostPoll from "@/components/Post/PostTypes/PostPoll/PostPoll";
 import PostCode from "@/components/Post/PostTypes/PostCode/PostCode";
 
 const DashboardPostItem: React.FC<PostProps> = ({ post }) => {
@@ -34,10 +33,6 @@ const DashboardPostItem: React.FC<PostProps> = ({ post }) => {
 
       {post.type === "video" && post.video && (
         <PostVideo video={post.video} />
-      )}
-
-      {post.type === "poll" && post.poll && (
-        <PostPoll poll={post.poll} />
       )}
 
       {post.type === "code" && post.code && (
