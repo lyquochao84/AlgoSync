@@ -3,7 +3,7 @@
 import React, { JSX, useState } from "react";
 import Image from "next/image";
 
-import { FaImage, FaVideo, FaPoll } from "react-icons/fa";
+import { FaImage, FaVideo } from "react-icons/fa";
 import { FaLaptopCode } from "react-icons/fa6";
 
 import styles from "./DashboardPostBox.module.css";
@@ -44,9 +44,6 @@ const DashboardPostBox: React.FC = (): JSX.Element => {
           </button>
           <button className={styles.optionButton}>
             <FaVideo /> Video
-          </button>
-          <button className={styles.optionButton}>
-            <FaPoll /> Poll
           </button>
           <button className={styles.optionButton}>
             <FaLaptopCode /> Code

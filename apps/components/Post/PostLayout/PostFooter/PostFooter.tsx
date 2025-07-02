@@ -26,16 +26,6 @@ const PostFooter: React.FC<PostFooterProps> = ({ postId }) => {
         <span className={styles.count}>{replyCount}</span>
         <p>Reply</p>
       </button>
-      <button className={`${styles.action} ${styles.repost}`}>
-        <AiOutlineCloudSync className={`${styles.icon} ${styles.repost_icon}`} />
-        <span className={styles.count}>{repostCount}</span>
-        <p>Repost</p>
-      </button>
-      <button className={`${styles.action} ${styles.share}`}>
-        <FaShareFromSquare className={`${styles.icon} ${styles.share_icon}`} />
-        <span className={styles.count}>{shareCount}</span>
-        <p>Share</p>
-      </button>
     </div>
   );
 };

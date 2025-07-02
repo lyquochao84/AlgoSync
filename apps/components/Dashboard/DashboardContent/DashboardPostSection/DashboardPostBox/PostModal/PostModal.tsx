@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./PostModal.module.css";
 import { PostModalProps } from "@/types/PostModal/PostModal";
-import { FaImage, FaVideo, FaPoll } from "react-icons/fa";
+import { FaImage, FaVideo } from "react-icons/fa";
 import { FaLaptopCode, FaFaceSmile } from "react-icons/fa6";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
@@ -41,9 +41,6 @@ const PostModal: React.FC<PostModalProps> = ({ setIsModalOpen }) => {
             </button>
             <button className={styles.optionButton}>
               <FaVideo /> Video
-            </button>
-            <button className={styles.optionButton}>
-              <FaPoll /> Poll
             </button>
             <button className={styles.optionButton}>
               <FaLaptopCode /> Code

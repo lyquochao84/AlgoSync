@@ -41,20 +41,8 @@ const DashboardResources: React.FC = (): JSX.Element => {
       </div>
       <div className={styles.dashboard_resources_item}>
         <Link href="/dashboard" className={styles.dashboard_resources_link}>
-          <LiaBusinessTimeSolid className={styles.dashboard_resources_icon} />
-          <span>Job Boards</span>
-        </Link>
-      </div>
-      <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
           <FaRegBuilding className={styles.dashboard_resources_icon} />
           <span>Companies</span>
-        </Link>
-      </div>
-      <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
-          <LuHandshake className={styles.dashboard_resources_icon} />
-          <span>Projects</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
