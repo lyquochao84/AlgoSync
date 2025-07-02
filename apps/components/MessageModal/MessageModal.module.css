@@ -52,6 +52,12 @@
   color: var(--font-color);
 }
 
+.message_tab_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .message_tab_list {
   display: flex;
   gap: 1rem;
@@ -77,6 +83,22 @@
   color: var(--dashboard-theme-color);
 }
 
+.new_message_button {
+  background: none;
+  border: none;
+}
+
+.new_message_icon {
+  font-size: 2rem;
+  color: var(--second-theme-color);
+  margin-right: 0.2rem;
+}
+
+.new_message_icon:hover {
+  opacity: 0.76;
+  cursor: pointer;
+}
+
 .split_view {
   display: flex;
   flex: 1;
@@ -85,7 +107,7 @@
 }
 
 .user_list {
-  width: 15.625rem;
+  width: 15.9rem;
   background: #1e1e1e;
   border-right: 1px solid #333;
   padding: 1rem;
@@ -154,11 +176,20 @@
   border-radius: 10px;
 }
 
-.chat_bubble_left {
+.chat_row_left {
   display: flex;
-  align-items: flex-end;
-  gap: 0.4rem;
-  align-self: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+}
+
+.chat_row_right {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.3rem 0;
+}
+
+.chat_bubble_left {
   background: #2a2a2a;
   padding: 0.6rem 1rem;
   border-radius: 16px;
@@ -168,7 +199,6 @@
 }
 
 .chat_bubble_right {
-  align-self: flex-end;
   background: #edd0ae;
   padding: 0.6rem 1rem;
   border-radius: 16px;
@@ -177,12 +207,17 @@
   font-family: 'Inter', sans-serif;
 }
 
+.message_avatar {
+  border-radius: 50%;
+}
+
 .message_status {
   font-size: 1rem;
   color: #999;
   margin-right: 0.5rem;
   text-align: right;
   display: block;
+  margin-top: -0.4rem;
 }
 
 .chat_wrapper {
@@ -258,51 +293,6 @@
 .icon_button:hover {
   color: var(--second-theme-color);
 }
-
-/* Search Message Bar, New Chat Icon, Avatar next to the message */
-.user_list_header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.message_search_input {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  background: #2a2a2a;
-  color: #fff;
-  font-size: 0.9rem;
-  font-family: "Jersey 15", sans-serif;
-}
-
-.new_chat_button {
-  background: var(--second-theme-color);
-  border: none;
-  border-radius: 8px;
-  color: var(--dashboard-theme-color);
-  padding: 0.5rem 0.7rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.new_chat_button:hover {
-  opacity: 0.85;
-}
-
-
-.message_avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 0.1rem;
-}
-
 
 /* Animations */
 @keyframes zoomOutBackground {

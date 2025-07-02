@@ -10,9 +10,11 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { RiImageFill } from "react-icons/ri";
 import { LuSticker } from "react-icons/lu";
 import { HiMiniGif } from "react-icons/hi2";
-import { BsChatSquareDots } from "react-icons/bs";
+import { TbMessage2Code } from "react-icons/tb";
 
 import { MessageModalProps } from "@/types/MessageModal/MessageModal";
+import Link from "next/link";
+import NewMessageModal from "./NewMessageModal/NewMessageModal";
 
 const TABS = ["All Messages", "Group Messages", "House Messages"] as const;
 type Tab = (typeof TABS)[number];
@@ -20,6 +22,13 @@ type Tab = (typeof TABS)[number];
 const mockUsers = [
   { name: "Hao", avatar: "https://i.pravatar.cc/100?img=1" },
   { name: "Kevin", avatar: "https://i.pravatar.cc/100?img=2" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
+  { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
   { name: "Juliet", avatar: "https://i.pravatar.cc/100?img=3" },
 ];
 
@@ -48,7 +57,7 @@ const messages = [
   {
     text: "We’ll deploy it tonight!",
     sender: "me",
-    status: "sent",
+    status: "read",
     avatar: "https://i.pravatar.cc/100?img=1",
   },
 ];
@@ -58,6 +67,7 @@ const MessageModal: React.FC<MessageModalProps> = ({ onClose }) => {
   const [selectedUser, setSelectedUser] = useState<number>(0);
   const [showNewChatModal, setShowNewChatModal] = useState<boolean>(false);
 
+  // "ESC" Key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -66,6 +76,7 @@ const MessageModal: React.FC<MessageModalProps> = ({ onClose }) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
+  // Chat Content
   const chatContent = (
     <div className={styles.chat_wrapper}>
       <div className={styles.chat_box}>
@@ -79,32 +90,37 @@ const MessageModal: React.FC<MessageModalProps> = ({ onClose }) => {
                 .pop();
 
           return (
-            <div
-              key={idx}
-              className={
-                msg.sender === "me"
-                  ? styles.chat_bubble_right
-                  : styles.chat_bubble_left
-              }
-            >
-              {msg.sender !== "me" && (
-                <Image
-                  src={msg.avatar}
-                  alt="avatar"
-                  width={30}
-                  height={30}
-                  className={styles.message_avatar}
-                />
+            <>
+              {msg.sender === "me" ? (
+                <>
+                  <div className={styles.chat_row_right}>
+                    <div className={styles.chat_bubble_right}>
+                      <p>{msg.text}</p>
+                    </div>
+                  </div>
+                  {isLastFromMe && msg.status && (
+                    <span className={styles.message_status}>
+                      {msg.status === "read" ? "Readed" : "Sent"}
+                    </span>
+                  )}
+                </>
+              ) : (
+                <div className={styles.chat_row_left}>
+                  <Link href="/dashboard">
+                    <Image
+                      src={msg.avatar}
+                      alt="avatar"
+                      width={36}
+                      height={36}
+                      className={styles.message_avatar}
+                    />
+                  </Link>
+                  <div className={styles.chat_bubble_left}>
+                    <p>{msg.text}</p>
+                  </div>
+                </div>
               )}
-              <div>
-                <p>{msg.text}</p>
-                {isLastFromMe && msg.status && (
-                  <span className={styles.message_status}>
-                    {msg.status === "read" ? "Readed" : "Sent"}
-                  </span>
-                )}
-              </div>
-            </div>
+            </>
           );
         })}
       </div>
@@ -149,6 +165,10 @@ const MessageModal: React.FC<MessageModalProps> = ({ onClose }) => {
     </div>
   );
 
+  // Open/Close New Message Modal
+  const openNewMessageModal = () => setShowNewChatModal(true);
+  const closeNewMessageModal = () => setShowNewChatModal(false);
+
   return (
     <div className={styles.message_modal_overlay} onClick={onClose}>
       <div
@@ -164,39 +184,33 @@ const MessageModal: React.FC<MessageModalProps> = ({ onClose }) => {
             <IoMdCloseCircleOutline />
           </button>
         </div>
-
-        <div className={styles.message_tab_list}>
-          {TABS.map((tab) => (
-            <button
-              key={tab}
-              className={`${styles.message_tab} ${
-                selectedTab === tab ? styles.active_tab : ""
-              }`}
-              onClick={() => setSelectedTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
+        
+        {/* Tab Header */}
+        <div className={styles.message_tab_header}>
+          <div className={styles.message_tab_list}>
+            {TABS.map((tab) => (
+              <button
+                key={tab}
+                className={`${styles.message_tab} ${
+                  selectedTab === tab ? styles.active_tab : ""
+                }`}
+                onClick={() => setSelectedTab(tab)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <button className={styles.new_message_button} onClick={openNewMessageModal}>
+            <TbMessage2Code className={styles.new_message_icon} />
+          </button>
         </div>
-
+        
+        {/* Tab Content */}
         {selectedTab === "House Messages" ? (
           <div className={styles.full_chat}>{chatContent}</div>
         ) : (
           <div className={styles.split_view}>
             <div className={styles.user_list}>
-              <div className={styles.user_list_header}>
-                <input
-                  type="text"
-                  placeholder="Search messages..."
-                  className={styles.message_search_input}
-                />
-                <button
-                  className={styles.new_chat_button}
-                  onClick={() => setShowNewChatModal(true)}
-                >
-                  <BsChatSquareDots />
-                </button>
-              </div>
               {(selectedTab === "All Messages" ? mockUsers : mockGroups).map(
                 (item, idx) => (
                   <div
@@ -222,34 +236,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ onClose }) => {
           </div>
         )}
 
+        {/* New Message Modal */}
         {showNewChatModal && (
-          <div
-            className={styles.new_chat_overlay}
-            onClick={() => setShowNewChatModal(false)}
-          >
-            <div
-              className={styles.new_chat_modal}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h3>Start New Conversation</h3>
-              <input
-                type="text"
-                placeholder="Search users you follow..."
-                className={styles.new_chat_input}
-              />
-              <div className={styles.search_results}>
-                <div className={styles.search_result_entry}>
-                  <Image
-                    src="https://i.pravatar.cc/100?img=4"
-                    alt="User"
-                    width={40}
-                    height={40}
-                  />
-                  <p className={styles.result_name}>DevName</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <NewMessageModal onClose={closeNewMessageModal} />
         )}
       </div>
     </div>
