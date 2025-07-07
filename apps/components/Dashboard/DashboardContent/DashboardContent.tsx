@@ -53,26 +53,6 @@ export const examplePosts: Post[] = [
     },
   },
   {
-    id: "post-4",
-    user: {
-      avatar: "https://i.pravatar.cc/100?img=5",
-      username: "Juliet",
-    },
-    time: "30m ago",
-    type: "poll",
-    text: "What language do you prefer for backend development?",
-    poll: {
-      question: "Choose your backend favorite:",
-      options: [
-        { option: "Node.js", votes: 34 },
-        { option: "Python", votes: 45 },
-        { option: "Go", votes: 21 },
-      ],
-      totalVotes: 100,
-      userVotedOption: undefined, // Change if voted
-    },
-  },
-  {
     id: "post-5",
     user: {
       avatar: "https://i.pravatar.cc/100?img=8",

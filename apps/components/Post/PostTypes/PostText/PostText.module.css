@@ -1,8 +1,8 @@
 .text {
   margin: 0.5rem 0;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--font-color);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .seeMore {
@@ -12,5 +12,5 @@
   font-family: "Jersey 15", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }

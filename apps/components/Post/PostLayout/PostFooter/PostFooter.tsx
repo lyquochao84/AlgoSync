@@ -26,6 +26,10 @@ const PostFooter: React.FC<PostFooterProps> = ({ postId }) => {
         <span className={styles.count}>{replyCount}</span>
         <p>Reply</p>
       </button>
+      <button className={`${styles.action} ${styles.share}`}>
+        <FaShareFromSquare className={`${styles.icon} ${styles.share_icon}`} />
+        <p>Share</p>
+      </button>
     </div>
   );
 };
