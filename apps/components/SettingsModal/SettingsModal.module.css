@@ -78,19 +78,19 @@
 .tab {
   background: none;
   border: none;
-  color: var(--second-theme-color);
+  color: var(--font-color);
   text-align: left;
   padding: 0.5rem 0;
   cursor: pointer;
   font-size: 1.5rem;
   border-radius: 10px;
+  padding-left: 0.75rem;
 }
 
 .tab:hover,
 .active {
   background-color: var(--dashboard-theme-color);
-  border-left: 3px solid var(--accent);
-  padding-left: 0.75rem;
+  border-left: 3px solid var(--second-theme-color);
   color: var(--second-theme-color);
 }
 
@@ -105,128 +105,14 @@
   border-radius: 10px;
 }
 
+.logout:hover {
+  opacity: 0.7;
+}
+
 .tab_content {
   flex: 1;
   padding: 1rem 2rem;
   overflow-y: auto;
-}
-
-.form {
-  height: 35rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.tab_content::-webkit-scrollbar {
-  width: 3px;
-}
-
-.tab_content::-webkit-scrollbar-thumb {
-  background-color: #333;
-  border-radius: 10px;
-}
-
-/* Avatar */
-.avatar_placeholder {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.avatar_circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #2a2a2a;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 2px solid #444;
-}
-
-.camera_icon {
-  color: #ccc;
-  font-size: 24px;
-  z-index: 1;
-}
-
-.file_input {
-  display: none;
-}
-
-.avatar_circle.saved {
-  border-color: #22c55e;
-}
-
-.name_label {
-  margin-top: 0.2rem;
-  margin-left: 0.6rem;
-}
-
-.name_input {
-  width: 100%;
-}
-
-/* Short Bio */
-.char_count {
-  margin-top: 0.3rem;
-  text-align: right;
-  font-size: 1.2rem;
-  color: #888;
-}
-
-.form label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  color: var(--second-theme-color);
-  font-size: 1.6rem;
-}
-
-.form input,
-.form textarea {
-  background-color: #000;
-  border: 1px solid var(--dashboard-theme-color);
-  color: var(--font-color);
-  padding: 0.6rem;
-  border-radius: 4px;
-  margin-top: 0.3rem;
-  font-family: inherit;
-  font-size: 1.2rem;
-  margin-left: -0.2rem;
-}
-
-.form textarea {
-  resize: vertical;
-}
-
-.input_error {
-  border: 1px solid red !important;
-  background-color: #2a0000;
-}
-
-.error_message {
-  color: red;
-  font-size: 1.1rem;
-  margin-top: 0.3rem;
-}
-
-.save {
-  background-color: #1a1a1a;
-  border: 1px solid var(--border);
-  color: var(--accent);
-  padding: 0.5rem;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 1rem;
-  margin-top: 1rem;
-}
-
-.save:hover {
-  background-color: #222;
 }
 
 /* Animations */
