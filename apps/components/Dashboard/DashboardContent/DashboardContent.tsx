@@ -1,5 +1,7 @@
 "use client";
 
+import React, { JSX, useState, useEffect } from "react";
+
 import styles from "./DashboardContent.module.css";
 
 import DashboardFriendsList from "./DashboardFriendsList/DashboardFriendsList";
@@ -7,8 +9,9 @@ import DashboardPostBox from "./DashboardPostSection/DashboardPostBox/DashboardP
 import DashboardBlogBox from "./DashboardBlogsSection/DashboardBlogBox/DashboardBlogBox";
 import DashboardPostContent from "./DashboardPostSection/DashboardPostContent/DashboardPostContent";
 
-import { Post } from "@/types/DashboardPostContent/DashboardPostContent";
+import { Post } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 import { useDashboardTab } from "@/context/Dashboard/DashboardTabContext";
+import { UserInfo } from "@/types/Dashboard/DashboardLeftPanel/DashboardInfos";
 
 export const examplePosts: Post[] = [
   {
@@ -74,8 +77,31 @@ export const examplePosts: Post[] = [
   },
 ];
 
-export default function DashboardContent() {
+const DashboardContent: React.FC = (): JSX.Element => {
   const { activeTab, refreshKey } = useDashboardTab();
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+
+  // Fetch avatar for post & blog box
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_USER_API}/user/infos`,
+          {
+            credentials: "include",
+          }
+        );
+        if (!res.ok) throw new Error("Failed to fetch user info");
+        const data = await res.json();
+        setUserInfo(data);
+      } catch (err) {
+        console.error("Failed to fetch user info:", err);
+        setUserInfo(null);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
 
   return (
     <div className={styles.dashboard}>
@@ -83,7 +109,7 @@ export default function DashboardContent() {
       <div className={styles.dashboard_main_content}>
         {activeTab === "posts" && (
           <>
-            <DashboardPostBox />
+            <DashboardPostBox userInfo={userInfo} />
             <DashboardPostContent
               posts={examplePosts}
               refreshKey={refreshKey}
@@ -92,10 +118,12 @@ export default function DashboardContent() {
         )}
         {activeTab === "blogs" && (
           <div className={styles.dashboard_blogs_content}>
-            <DashboardBlogBox />
+            <DashboardBlogBox userInfo={userInfo} />
           </div>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default DashboardContent;

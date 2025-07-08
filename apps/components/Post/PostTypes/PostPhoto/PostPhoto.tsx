@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PostPhotoProps } from "@/types/DashboardPostContent/DashboardPostContent";
+import { PostPhotoProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 import styles from "./PostPhoto.module.css";
 import Image from "next/image";
 

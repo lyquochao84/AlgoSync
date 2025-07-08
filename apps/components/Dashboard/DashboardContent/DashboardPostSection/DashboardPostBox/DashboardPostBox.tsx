@@ -10,18 +10,31 @@ import styles from "./DashboardPostBox.module.css";
 import Avatar from "@/public/Fox.png";
 
 import PostModal from "./PostModal/PostModal";
+import { DashboardPostBoxProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostBox/DashboardPostBox";
 
-const DashboardPostBox: React.FC = (): JSX.Element => {
+const DashboardPostBox: React.FC<DashboardPostBoxProps> = ({
+  userInfo,
+}): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  // Loading state
+  if (!userInfo) {
+    return <div className={styles.spinner}></div>;
+  }
+
+  const { name, avatarUrl } = userInfo;
 
   return (
     <>
       <div className={styles.contentWrapper}>
         <div className={styles.postBox}>
           <Image
-            src={Avatar}
-            alt="User Avatar"
+            src={avatarUrl || ""}
+            alt={`${name} avatar`}
             className={styles.avatar}
+            width={48}
+            height={48}
+            quality={100}
           />
 
           <div className={styles.separator} />
@@ -36,7 +49,7 @@ const DashboardPostBox: React.FC = (): JSX.Element => {
             />
           </div>
         </div>
-  
+
         {/* Post Type Buttons */}
         <div className={styles.postOptions}>
           <button className={`${styles.optionButton} ${styles.active}`}>
@@ -50,10 +63,8 @@ const DashboardPostBox: React.FC = (): JSX.Element => {
           </button>
         </div>
       </div>
-      
-      {isModalOpen && (
-        <PostModal setIsModalOpen={setIsModalOpen} />
-      )}
+
+      {isModalOpen && <PostModal setIsModalOpen={setIsModalOpen} />}
     </>
   );
 };

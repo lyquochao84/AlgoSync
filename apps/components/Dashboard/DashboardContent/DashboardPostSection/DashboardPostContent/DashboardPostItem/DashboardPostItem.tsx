@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PostProps } from "@/types/DashboardPostContent/DashboardPostContent";
+import { PostProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 
 import styles from "./DashboardPostItem.module.css";
 

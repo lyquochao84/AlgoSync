@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { PostTextProps } from "@/types/DashboardPostContent/DashboardPostContent";
+import { PostTextProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 import styles from "./PostText.module.css";
 
 const PostText: React.FC<PostTextProps> = ({ text, expanded, onExpand }) => {

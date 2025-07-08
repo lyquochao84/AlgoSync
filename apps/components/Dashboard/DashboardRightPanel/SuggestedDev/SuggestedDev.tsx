@@ -27,7 +27,7 @@ const SuggestedDev: React.FC = (): JSX.Element => {
     <section className={styles.card}>
       <div className={styles.suggestedDev_header}>
         <h3 className={styles.title}>Suggested Dev</h3>
-        <Link href="/dashboard" className={styles.suggestedDev_link}>
+        <Link href="/suggested-dev" className={styles.suggestedDev_link}>
           More
         </Link>
       </div>

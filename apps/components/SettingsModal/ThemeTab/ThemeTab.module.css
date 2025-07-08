@@ -68,16 +68,19 @@ input:checked + .slider::before {
 }
 
 .save_button {
-  align-self: flex-start;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
-  background-color: #222;
-  color: #fff;
-  border: none;
+  background-color: var(--second-theme-color);
+  color: var(--dashboard-section-color);
+  border: 1px solid var(--font-color);
   border-radius: 6px;
+  margin: 0.3rem 0;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-style: normal;
+  font-family: inherit;
 }
 
 .save_button:hover {
-  background-color: #000;
+  opacity: 0.85;
 }

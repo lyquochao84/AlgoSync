@@ -1,13 +1,14 @@
 "use client";
 
 import React, { JSX, useState } from "react";
+import Image from "next/image";
+import toast from "react-hot-toast";
 
 import styles from "./TopFollowingsTab.module.css";
 
 import { TopFollowings } from "@/types/SettingsModal/TopFollowingsTab/TopFollowingsTab";
 
-import { FaTimes, FaStar, FaRegStar  } from "react-icons/fa";
-import Image from "next/image";
+import { FaTimes, FaStar, FaRegStar } from "react-icons/fa";
 
 const dummyFollowings: TopFollowings[] = [
   { id: "1", name: "Hao", avatar: "https://i.pravatar.cc/100?img=12" },
@@ -35,7 +36,14 @@ const TopFollowingsTab: React.FC = (): JSX.Element => {
   // Add to favorite list
   const handleAdd = (followings: TopFollowings) => {
     if (favoriteFollowings.length >= 10)
-      return alert("You can only add up to 10 favorite followings people");
+      toast.error("You can only add up to 10 favorite followings people", {
+        duration: 3000,
+        style: {
+          background: "#333",
+          color: "#fff",
+          borderRadius: "8px",
+        },
+      });
     if (favoriteFollowings.find((f) => f.id === followings.id)) return;
     setFavoriteFollowings([...favoriteFollowings, followings]);
   };
@@ -59,12 +67,14 @@ const TopFollowingsTab: React.FC = (): JSX.Element => {
 
   return (
     <div className={styles.container}>
+      {/* Search Input */}
       <input
         className={styles.searchInput}
-        placeholder="Search followings dev..."
+        placeholder="Search your followings..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      {/* Search Results */}
       {searchTerm && (
         <div className={styles.resultList}>
           {filteredFollowings.map((f) => (
@@ -77,18 +87,26 @@ const TopFollowingsTab: React.FC = (): JSX.Element => {
                 height={36}
               />
               <span>{f.name}</span>
-              <FaRegStar
-                className={styles.starIcon}
-                onClick={() => handleAdd(f)}
-              />
+              {favoriteFollowings.some((fav) => fav.id === f.id) ? (
+                <FaStar
+                  className={styles.starIcon}
+                  onClick={() => handleRemove(f.id)}
+                />
+              ) : (
+                <FaRegStar
+                  className={styles.starIcon}
+                  onClick={() => handleAdd(f)}
+                />
+              )}
             </div>
           ))}
         </div>
       )}
-
+      {/* Favortie List Header */}
       <h4 className={styles.sectionTitle}>
         Your Favorite Followings Dev ({favoriteFollowings.length}/10)
       </h4>
+      {/* Favorite List */}
       <div className={styles.favoriteList}>
         {favoriteFollowings.map((f, index) => (
           <div
@@ -104,7 +122,13 @@ const TopFollowingsTab: React.FC = (): JSX.Element => {
               handleDrag(dragIndex, index);
             }}
           >
-            <Image src={f.avatar} alt={f.name} className={styles.avatar} width={36} height={36}/>
+            <Image
+              src={f.avatar}
+              alt={f.name}
+              className={styles.avatar}
+              width={36}
+              height={36}
+            />
             <span>{f.name}</span>
             <FaTimes
               className={styles.removeIcon}
@@ -113,6 +137,8 @@ const TopFollowingsTab: React.FC = (): JSX.Element => {
           </div>
         ))}
       </div>
+      {/* Save Button */}
+      <button className={styles.save_button}>Save Changes</button>
     </div>
   );
 };

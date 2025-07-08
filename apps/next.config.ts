@@ -31,6 +31,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'aps.autodesk.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'algosync.3709b66289d78564d9ff8eeeb8a567d9.r2.cloudflarestorage.com'
       }
     ],
   },

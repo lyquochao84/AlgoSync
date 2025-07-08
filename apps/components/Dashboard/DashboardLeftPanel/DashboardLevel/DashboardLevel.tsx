@@ -1,21 +1,47 @@
 import React, { JSX } from "react";
-import styles from "./DashboardLevel.module.css";
-
-import HouseIcon from "@/public/Dashboard_Logo/web.png";
-
 import Image from "next/image";
 import Link from "next/link";
 
-const DashboardLevel: React.FC = (): JSX.Element => {
+import styles from "./DashboardLevel.module.css";
+
+import { DashboardLevelProps } from "@/types/Dashboard/DashboardLeftPanel/DashboardLevel/DashboardLevel";
+
+import { teamColors } from "@/utils/team/teamColors/teamColors";
+import { teamLogos } from "@/utils/team/teamLogos/teamLogos";
+
+const DashboardLevel: React.FC<DashboardLevelProps> = ({
+  userInfo,
+}): JSX.Element => {
+  // Loading state
+  if (!userInfo) {
+    return <div className={styles.spinner}></div>;
+  }
+
+  const { team, level, xp } = userInfo;
+
+  // Get color and logo based on team key
+  const teamColor = teamColors[team?.toLocaleLowerCase() || ""];
+  const teamLogo = teamLogos[team?.toLocaleLowerCase() || ""];
+
   return (
     <div className={styles.level_card}>
       <div className={styles.house_header}>
-        <Image src={HouseIcon} alt="House Icon" className={styles.house_icon} />
-        <h3 className={styles.house_name}>Webtoria</h3>
+        <Image
+          src={teamLogo}
+          alt={`${team} logo`}
+          className={styles.house_icon}
+        />
+        <h3
+          className={styles.house_name}
+          style={{ WebkitTextStroke: `1px ${teamColor}` }}
+        >
+          {team ? team.charAt(0).toUpperCase() + team.slice(1) : "Unknown"}
+        </h3>
       </div>
 
       <p className={styles.level_name}>
-        <strong>Level: </strong>Chunin
+        <strong style={{ color: teamColor }}>Level: </strong>
+        <span style={{ WebkitTextStroke: `1px ${teamColor}` }}>{level}</span>
       </p>
 
       <div className={styles.progress_bar_wrapper}>
@@ -23,14 +49,23 @@ const DashboardLevel: React.FC = (): JSX.Element => {
           <div className={styles.progress_bar_background}>
             <div
               className={styles.progress_bar_fill}
-              style={{ width: "1%" }}
+              style={{ width: `${level}%`, backgroundColor: teamColor }}
             ></div>
           </div>
-          <span className={styles.progress_percentage}>1%</span>
+          <span
+            className={styles.progress_percentage}
+            style={{ color: teamColor }}
+          >
+            {xp}%
+          </span>
         </div>
       </div>
 
-      <Link href="/dashboard" className={styles.view_team_button}>
+      <Link
+        href="/dashboard"
+        className={styles.view_team_button}
+        style={{ border: `1px solid ${teamColor}` }}
+      >
         <p>View Team</p>
       </Link>
     </div>

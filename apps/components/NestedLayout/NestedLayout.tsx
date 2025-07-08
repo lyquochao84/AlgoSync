@@ -17,7 +17,25 @@ export default function NestedLayout({
   const pathname = usePathname();
 
   const isOnboarding = pathname.startsWith("/onboarding");
-  const isDashboard = pathname.startsWith("/dashboard");
+
+  const dashboardRoutes = [
+    "/dashboard",
+    "/profile",
+    "/team",
+    "/top-blogs",
+    "/popular-videos",
+    "/news",
+    "/explore-teams",
+    "/companies",
+    "/terms",
+    "/privacy",
+    "/suggested-dev",
+    "/followers",
+    "/following"
+  ];
+  const isDashboard = dashboardRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
 
   // Onboarding Layout
   if (isOnboarding) {

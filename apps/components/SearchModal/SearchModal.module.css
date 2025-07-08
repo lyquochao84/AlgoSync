@@ -214,6 +214,26 @@
   color: var(--second-theme-color);
 }
 
+/* Recent Empty Icon & Text */
+.recent_empty_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.recent_empty_icon {
+  font-size: 7rem;
+  margin-bottom: 0.3rem;
+  color: #696767;
+}
+
+.recent_empty_text {
+  font-size: 2rem;
+  color: #696767;
+}
+
 /* Animations */
 @keyframes zoomOutBackground {
   from {

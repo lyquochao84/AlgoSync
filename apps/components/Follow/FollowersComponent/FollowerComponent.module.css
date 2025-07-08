@@ -1,0 +1,97 @@
+.followers_wrapper {
+  max-width: 800px; /* Optional */
+  margin-left: 0;   /* Align left */
+  padding-left: 2rem; /* Same as the layout's horizontal padding */
+  padding-top: 1rem;
+}
+
+.followers_input_wrapper {
+  margin-bottom: 1rem;
+}
+
+.follower_search_input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.followers_count_wrapper {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.followers_count {
+  color: #fff;
+}
+
+.no_result_text {
+  margin-top: 1rem;
+  color: #888;
+  text-align: center;
+  font-style: italic;
+}
+
+.followers_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.follower_card {
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.follower_card:hover {
+  background-color: #3a3a3a;
+}
+
+.avatar_wrapper {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  border: 2px solid #444;
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(
+    --second-theme-color
+  ); /* Indigo color or your theme color */
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
