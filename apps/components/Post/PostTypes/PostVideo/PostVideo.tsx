@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { PostVideoProps } from "@/types/DashboardPostContent/DashboardPostContent";
+import { PostVideoProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 
 import styles from "./PostVideo.module.css";
 

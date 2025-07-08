@@ -26,7 +26,7 @@ const TechNews: React.FC = () => {
     <section className={styles.card}>
       <div className={styles.news_header}>
         <h3 className={styles.card_title}>Latest Tech News</h3>
-        <Link href="/dashboard" className={styles.news_header_link}>
+        <Link href="/news" className={styles.news_header_link}>
           More
         </Link>
       </div>

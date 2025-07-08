@@ -137,6 +137,14 @@
   color: black;
 }
 
+/* Char Count */
+.char_count {
+  margin-top: 0.3rem;
+  text-align: right;
+  font-size: 1.2rem;
+  color: #888;
+}
+
 /* Blink Animation */
 @keyframes blink {
   0%, 100% {

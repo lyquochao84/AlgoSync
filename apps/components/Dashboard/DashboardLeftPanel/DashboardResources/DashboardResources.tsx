@@ -16,31 +16,31 @@ const DashboardResources: React.FC = (): JSX.Element => {
   return (
     <div className={styles.dashboard_resources_wrapper}>
       <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
+        <Link href="/top-blogs" className={styles.dashboard_resources_link}>
           <RiArticleLine className={styles.dashboard_resources_icon} />
           <span>Top Blogs</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
+        <Link href="/popular-videos" className={styles.dashboard_resources_link}>
           <MdOndemandVideo className={styles.dashboard_resources_icon} />
           <span>Popular Videos</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
+        <Link href="/news" className={styles.dashboard_resources_link}>
           <FaRegNewspaper className={styles.dashboard_resources_icon} />
           <span>Tech News</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
+        <Link href="/explore-teams" className={styles.dashboard_resources_link}>
           <AiOutlineTeam className={styles.dashboard_resources_icon} />
           <span>Explore Teams</span>
         </Link>
       </div>
       <div className={styles.dashboard_resources_item}>
-        <Link href="/dashboard" className={styles.dashboard_resources_link}>
+        <Link href="/companies" className={styles.dashboard_resources_link}>
           <FaRegBuilding className={styles.dashboard_resources_icon} />
           <span>Companies</span>
         </Link>

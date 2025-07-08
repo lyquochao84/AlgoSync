@@ -16,6 +16,9 @@ const AvatarCropperModal = dynamic(
   }
 );
 
+// Max bio characters
+const MAX_BIO_LENGTH = 50;
+
 const UserInfo: React.FC<UserInfoProps> = ({
   username,
   setUsername,
@@ -112,14 +115,22 @@ const UserInfo: React.FC<UserInfoProps> = ({
           </div>
           <div className={styles.form_group}>
             <label>
-              Short Headline <span>(optional)</span>
+              Short Bio <span>(optional)</span>
             </label>
             <input
               type="text"
               placeholder="Short and sweet"
               value={headline}
-              onChange={(e) => setHeadline(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value.length <= MAX_BIO_LENGTH) {
+                  setHeadline(value);
+                }
+              }}
             />
+            <div className={styles.char_count}>
+              {headline.length} / {MAX_BIO_LENGTH}
+            </div>
           </div>
 
           <button className={styles.submit_button} onClick={onSubmit}>

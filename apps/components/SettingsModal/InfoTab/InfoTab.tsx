@@ -18,7 +18,7 @@ const AvatarCropperModal = dynamic(
 );
 
 // Max bio characters
-const MAX_BIO_LENGTH = 100;
+const MAX_BIO_LENGTH = 50;
 
 const InfoTab: React.FC<InfoTabProps> = ({
   bio,

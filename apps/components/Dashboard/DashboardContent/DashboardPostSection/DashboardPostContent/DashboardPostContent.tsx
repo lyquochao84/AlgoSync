@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { DashboardPostContentProps, Post } from "@/types/DashboardPostContent/DashboardPostContent";
+import { DashboardPostContentProps, Post } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 
 import styles from "./DashboardPostContent.module.css";
 import DashboardPostItem from "./DashboardPostItem/DashboardPostItem";

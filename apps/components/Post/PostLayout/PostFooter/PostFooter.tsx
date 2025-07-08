@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { PostFooterProps } from "@/types/DashboardPostContent/DashboardPostContent";
+import { PostFooterProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 import styles from "./PostFooter.module.css";
 import { SlEnergy } from "react-icons/sl";
 import { FaRegComments, FaShareFromSquare } from "react-icons/fa6";

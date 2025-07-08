@@ -18,6 +18,6 @@ export const uploadAvatar = async (req: Request, res: Response) => {
 
   res.json({
     uploadUrl: url,
-    publicUrl: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com/${key}`,
+    publicUrl: key,
   });
 };

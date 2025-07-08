@@ -14,12 +14,7 @@ model User {
   passwordHash  String?  
   createdAt     DateTime @default(now())
   avatarUrl     String?
-  bio           String?                
-  location      String?                
-  portfolioURL  String?                
-  githubUrl     String?                
-  linkedinUrl   String?                
-  XUrl          String?                
+  bio           String?                             
   isOnboarded   Boolean  @default(false)
   team          String?
 

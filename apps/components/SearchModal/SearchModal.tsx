@@ -6,59 +6,20 @@ import Image from "next/image";
 
 import styles from "./SearchModal.module.css";
 
-import { SearchModalProps } from "@/types/SearchModal/SearchModal";
+import { SearchModalProps, SearchUser } from "@/types/SearchModal/SearchModal";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 import { MdOutlineRecentActors } from "react-icons/md";
+import { RiCodeView } from "react-icons/ri";
 
-const mockResults = [
-  {
-    id: 1,
-    name: "John Smith",
-    team: "Weboria",
-    avatar: "https://i.pravatar.cc/100?img=3",
-    bio: "Building cool apps with Node.js & React.",
-  },
-  {
-    id: 2,
-    name: "Sarah Lee",
-    team: "Weboria",
-    avatar: "https://i.pravatar.cc/100?img=4",
-    bio: "Loves CSS art and smooth UI animations.",
-  },
-  {
-    id: 3,
-    name: "Kevin Tran",
-    team: "Neurona",
-    avatar: "https://i.pravatar.cc/100?img=12",
-    bio: "SQL wizard. Always optimizing queries.",
-  },
-  {
-    id: 4,
-    name: "Kevin Ly",
-    team: "Cloudforge",
-    avatar: "https://i.pravatar.cc/100?img=19",
-  },
-  {
-    id: 5,
-    name: "Vy Vo",
-    team: "Visionix",
-    avatar: "https://i.pravatar.cc/100?img=20",
-    bio: "SQL wizard. Always optimizing queries.",
-  },
-  {
-    id: 6,
-    name: "Alice Nguyen",
-    team: "Visionix",
-    avatar: "https://i.pravatar.cc/100?img=25",
-    bio: "Frontend fanatic.",
-  },
-];
+import { teamColors } from "@/utils/team/teamColors/teamColors";
 
 const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
-  const [query, setQuery] = useState("");
-  const [filteredResults, setFilteredResults] = useState(mockResults);
+  const [query, setQuery] = useState<string>("");
+  const [filteredResults, setFilteredResults] = useState<SearchUser[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
+  // "ESC" key to exit
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -67,19 +28,54 @@ const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
+  // Search function
   useEffect(() => {
-    const results = mockResults.filter(
-      (dev) =>
-        dev.name.toLowerCase().includes(query.toLowerCase()) ||
-        dev.team.toLowerCase().includes(query.toLowerCase()) ||
-        (dev.bio && dev.bio.toLowerCase().includes(query.toLowerCase()))
-    );
-    setFilteredResults(results);
+    const controller = new AbortController();
+
+    // Display the result
+    const fetchResults = async () => {
+      if (query.trim().length < 2) {
+        setFilteredResults([]);
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        const res = await fetch(
+          `${
+            process.env.NEXT_PUBLIC_USER_API
+          }/user/search?query=${encodeURIComponent(query)}`,
+          {
+            signal: controller.signal,
+            credentials: "include",
+          }
+        );
+
+        if (!res.ok) throw new Error("Search failed");
+
+        const data = await res.json();
+        setFilteredResults(data);
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error("Search error:", err.message);
+        } else {
+          console.error("Unknown error during search:", err);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const debounce = setTimeout(fetchResults, 300);
+    return () => {
+      clearTimeout(debounce);
+      controller.abort();
+    };
   }, [query]);
 
-  // Only show 5 max in modal
-  const displayedResults =
-    query.trim() === "" ? mockResults : filteredResults.slice(0, 5);
+  // Limit to top 5 results
+  const displayedResults = filteredResults.slice(0, 5);
 
   return (
     <div className={styles.search_modal_overlay} onClick={onClose}>
@@ -96,7 +92,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
 
         <input
           type="text"
-          placeholder="Search developers, posts, etc..."
+          placeholder="Search developers..."
           className={styles.search_modal_input}
           autoFocus
           value={query}
@@ -107,64 +103,60 @@ const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
           {query.trim() === "" ? (
             <>
               <div className={styles.recented_searches_wrapper}>
-                <h3 className={styles.recent_searches_title}>Recent Searches</h3>
-                <MdOutlineRecentActors className={styles.recent_searches_icon} />
+                <h3 className={styles.recent_searches_title}>
+                  Recent Searches
+                </h3>
+                <MdOutlineRecentActors
+                  className={styles.recent_searches_icon}
+                />
               </div>
-              {mockResults.map((dev) => (
-                <Link
-                  href="/dashboard"
-                  key={dev.id}
-                  className={styles.search_results_profile_link}
-                >
-                  <div className={styles.result_card}>
-                    <Image
-                      src={dev.avatar}
-                      alt={dev.name}
-                      width={48}
-                      height={48}
-                      className={styles.result_avatar}
-                    />
-                    <div className={styles.result_info}>
-                      <div className={styles.result_info_header}>
-                        <h3>{dev.name}</h3>
-                        <span className={styles.vertical_separator}></span>
-                        <p className={styles.result_team}>{dev.team}</p>
-                      </div>
-                      <p className={styles.result_bio}>{dev.bio}</p>
-                    </div>
-                    <button className={styles.follow_button}>Follow</button>
-                  </div>
-                </Link>
-              ))}
+              <div className={styles.recent_empty_wrapper}>
+                <RiCodeView className={styles.recent_empty_icon} />
+                <p className={styles.recent_empty_text}>No recent searches</p>
+              </div>
             </>
+          ) : loading ? (
+            <div className={styles.loading_text}>Loading...</div>
           ) : filteredResults.length > 0 ? (
             <>
-              {displayedResults.map((dev) => (
-                <Link
-                  href="/dashboard"
-                  key={dev.id}
-                  className={styles.search_results_profile_link}
-                >
-                  <div className={styles.result_card}>
-                    <Image
-                      src={dev.avatar}
-                      alt={dev.name}
-                      width={48}
-                      height={48}
-                      className={styles.result_avatar}
-                    />
-                    <div className={styles.result_info}>
-                      <div className={styles.result_info_header}>
-                        <h3>{dev.name}</h3>
-                        <span className={styles.vertical_separator}></span>
-                        <p className={styles.result_team}>{dev.team}</p>
+              {displayedResults.map((dev) => {
+                const borderColor = dev.team
+                  ? teamColors[dev.team.toLowerCase()] || "#000"
+                  : "#000";
+                return (
+                  <Link
+                    href={`/dashboard`}
+                    key={dev.id}
+                    className={styles.search_results_profile_link}
+                  >
+                    <div className={styles.result_card} style={{ border: `1px solid ${borderColor}` }}>
+                      <Image
+                        src={dev.avatarUrl}
+                        alt={dev.name}
+                        width={48}
+                        height={48}
+                        quality={100}
+                        className={styles.result_avatar}
+                        // style={{ border: `2px solid ${borderColor}` }}
+                      />
+                      <div className={styles.result_info}>
+                        <div className={styles.result_info_header}>
+                          <h3>{dev.name}</h3>
+                          <span className={styles.vertical_separator}></span>
+                          <p
+                            className={styles.result_team}
+                            style={{ color: `${borderColor}` }}
+                          >
+                            {dev.team}
+                          </p>
+                        </div>
+                        <p className={styles.result_bio}>{dev.bio}</p>
                       </div>
-                      <p className={styles.result_bio}>{dev.bio}</p>
+                      <button className={styles.follow_button}>Follow</button>
                     </div>
-                    <button className={styles.follow_button}>Follow</button>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
 
               {filteredResults.length > 5 && (
                 <Link

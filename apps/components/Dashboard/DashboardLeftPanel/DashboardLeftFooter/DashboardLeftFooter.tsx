@@ -7,10 +7,10 @@ const DashboardLeftFooter: React.FC = (): JSX.Element => {
   return (
     <div className={styles.dashboard_left_footer}>
       <div className={styles.dashboard_left_terms_privacy}>
-        <Link href="/dashboard" className={styles.dashboard_left_link}>
+        <Link href="/terms" className={styles.dashboard_left_link}>
           Terms
         </Link>
-        <Link href="/dashboard" className={styles.dashboard_left_link}>
+        <Link href="/privacy" className={styles.dashboard_left_link}>
           Privacy
         </Link>
       </div>

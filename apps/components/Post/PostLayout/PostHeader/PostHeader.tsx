@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { PostHeaderProps } from "@/types/DashboardPostContent/DashboardPostContent";
+import { PostHeaderProps } from "@/types/Dashboard/DashboardPostMode/DashboardPostContent/DashboardPostContent";
 
 import { IoTimeOutline } from "react-icons/io5";
 import { CiSquareMore } from "react-icons/ci";
